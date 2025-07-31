@@ -55,7 +55,7 @@ const Hero = () => {
               <span className="cursor">|</span>
             </h2>
             <p className="hero-description">
-              
+
             </p>
             <div className="hero-buttons">
               <button
@@ -77,8 +77,8 @@ const Hero = () => {
             <div className="profile-card">
               <div className="profile-image">
                 {/* Add your profile image here */}
-                <div className="placeholder-image">
-                  <span>👨‍💻</span>
+                <div className="profile-image ">
+                  <img className="profile-image" src="assets/about/portrait.jpg" alt="Pasindu Vihangana" />
                 </div>
               </div>
               <div className="profile-stats">
@@ -87,12 +87,12 @@ const Hero = () => {
                   <span className="stat-label">Years Experience</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-number">50+</span>
-                  <span className="stat-label">Projects</span>
+                  <span className="stat-number">10+</span>
+                  <span className="stat-label">Certifications</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-number">100%</span>
-                  <span className="stat-label">Client Satisfaction</span>
+                  <span className="stat-number">20+</span>
+                  <span className="stat-label">Projects</span>
                 </div>
               </div>
             </div>
