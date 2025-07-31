@@ -1,0 +1,114 @@
+.services-section {
+  background: var(--color-bg);
+  padding: 4rem 0 4rem 0;
+  color: #fff;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.services-badge {
+  display: inline-block;
+  background: var(--color-card-bg);
+  color: var(--color-highlight);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.3rem 1.2rem;
+  border-radius: 1rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.services-title {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.services-subtitle {
+  color: #e0e0e0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.services-subtitle .highlight {
+  color: #ffd600;
+  font-weight: 700;
+}
+
+.services-cards {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  background: var(--color-card-bg);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+  padding: 2.5rem 2rem 2rem 2rem;
+  min-width: 320px;
+  max-width: 350px;
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #fff;
+  border: 1px solid var(--color-border);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+  border-color: var(--color-highlight);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+  color: var(--color-highlight);
+}
+
+.service-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.service-desc {
+  color: #e0e0e0;
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem 0;
+}
+
+.service-features li {
+  color: var(--color-highlight);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+@media (max-width: 1100px) {
+  .services-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .service-card {
+    max-width: 100%;
+    width: 100%;
+  }
+} 

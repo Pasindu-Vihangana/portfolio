@@ -1,0 +1,127 @@
+.footer {
+  background: #13151a;
+  color: #fff;
+  padding: 3rem 0 1rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.new-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.7rem;
+}
+
+.footer-desc {
+  color: #e0e0e0;
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin-bottom: 0.5rem;
+  color: #b0b8c1;
+  font-size: 0.92rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.footer-list li a {
+  color: #b0b8c1;
+  font-size: 0.92rem;
+  margin-left: 0.3rem;
+}
+
+.footer-list li a:hover {
+  color: #ffd600;
+}
+
+.footer-icon {
+  font-size: 1.1rem;
+  margin-right: 0.3rem;
+  vertical-align: middle;
+}
+
+.footer-cta-btn {
+  display: inline-block;
+  background: #ffd600;
+  color: #232b4d;
+  font-weight: 700;
+  font-size: 0.98rem;
+  border-radius: 10px;
+  padding: 0.6rem 1.2rem;
+  box-shadow: 0 4px 18px 0 rgba(0,0,0,0.18);
+  border: none;
+  outline: none;
+  margin-top: 0.5rem;
+  margin-bottom: 0.1rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.footer-cta-btn:hover,
+.footer-cta-btn:focus {
+  background: #ffe066;
+  color: #232b4d;
+  box-shadow: 0 6px 24px 0 rgba(0,0,0,0.22);
+}
+
+.footer-cta-arrow {
+  font-size: 1.1em;
+  margin-left: 0.4em;
+}
+
+.footer-bottom {
+  border-top: 1px solid #222;
+  padding-top: 1rem;
+  text-align: center;
+  color: #7a7e87;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .new-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .new-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    text-align: center;
+  }
+  .footer-col {
+    align-items: center;
+  }
+  .footer-cta-btn {
+    width: 100%;
+    text-align: center;
+  }
+} 
