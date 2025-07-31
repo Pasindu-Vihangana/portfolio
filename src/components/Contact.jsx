@@ -29,7 +29,7 @@ const Contact = () => {
                 <span className="contact-icon">📧</span>
                 <div>
                   <h4>Email</h4>
-                  <p>pasindu@example.com</p>
+                  <p>pasi1028@gmail.com</p>
                 </div>
               </div>
             </div>

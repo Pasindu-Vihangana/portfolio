@@ -1,5 +1,7 @@
 import React from 'react';
 import './Footer.css';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
 
 const Footer = () => {
   return (
@@ -17,17 +19,18 @@ const Footer = () => {
           </div>
 
           <div className="footer-col">
-            <a href="./#expertise"><h3 className="footer-title">Expertise</h3></a>
+            <a href="./#expertise"><h3 className="footer-title">🧠 Expertise</h3></a>
             <a href="./projects"><h3 className="footer-title">⚙️ Projects</h3></a>
             <a href="./certifications"><h3 className="footer-title">🏆 Certifications</h3></a>
-            <a href="./about"><h3 className="footer-title">About Me</h3></a>
+            <a href="./about"><h3 className="footer-title">📒 About Me</h3></a>
           </div>
 
           <div className="footer-col">
             <h3 className="footer-title">Connect</h3>
             <ul className="footer-list">
-              <li><span className="footer-icon" role="img" aria-label="LinkedIn">🔗</span> <a href="https://www.linkedin.com/in/pasindu-vihangana/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><span className="footer-icon" role="img" aria-label="Schedule a Call">📅</span> <a href="mailto:pasi1028@gmail.com">Schedule a Meeting</a></li>
+              <li><FaLinkedin size={32} color="#0077b5" /> <a href="https://www.linkedin.com/in/pasindu-vihangana/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><FaGithub size={32} color="#333" /> <a href="https://www.linkedin.com/in/pasindu-vihangana/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              <li><SiGmail size={32} color="#D14836" /> <a href="mailto:pasi1028@gmail.com">Schedule a Meeting</a></li>
             </ul>
           </div>
 
