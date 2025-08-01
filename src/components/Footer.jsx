@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 
@@ -20,9 +21,9 @@ const Footer = () => {
 
           <div className="footer-col">
             <a href="./#expertise"><h3 className="footer-title">🧠 Expertise</h3></a>
-            <a href="./projects"><h3 className="footer-title">⚙️ Projects</h3></a>
-            <a href="./certifications"><h3 className="footer-title">🏆 Certifications</h3></a>
-            <a href="./about"><h3 className="footer-title">📒 About Me</h3></a>
+            <Link to="/projects" ><h3 className="footer-title">⚙️ Projects</h3></Link>
+            <Link to="/certifications"><h3 className="footer-title">🏆 Certifications</h3></Link>
+            <Link to="/about"><h3 className="footer-title">📒 About Me</h3></Link>
           </div>
 
           <div className="footer-col">
