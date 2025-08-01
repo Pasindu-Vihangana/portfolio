@@ -16,7 +16,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/certifications" element={<Navigate to="/update-in-progress" replace />} />
+        <Route path="/certifications" element={<CertificationsPage />} />
+        {/* <Route path="/projects" element={<ProjectsPage />} /> */}
         <Route path="/projects" element={<Navigate to="/update-in-progress" replace />} />
         <Route path="/update-in-progress" element={<UpdateInProgress />} />
       </Routes>
