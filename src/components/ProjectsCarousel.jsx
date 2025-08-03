@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import './ProjectsCarousel.css';
 
 const projects = [
-
   {
     title: 'Fitness Tracker',
     description: 'A wireless perfomance monitor for tracking fitness metrics and progress for performance based athletics training.',
@@ -12,14 +11,14 @@ const projects = [
   },
   {
     title: 'Falcon Tracker',
-    description: 'A miniature tracking device capable of tracking locations of falconry birds over 32km+',
+    description: 'A miniature tracking device capable of tracking locations of falconory birds over 32km+',
     image: 'assets/projects/falcon-tracker-landing.jpg',
     caseStudy: '#',
     website: '#',
   },
   {
     title: 'Garment Counter',
-    description: 'Machine-learning based automation solution to minimize manual garment counting errors.',
+    description: 'Machine-learning assisted computer vision based automation solution to minimize manual garment counting errors.',
     image: 'assets/projects/garment-counter.gif',
     caseStudy: '#',
     website: '#',
