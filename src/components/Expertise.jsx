@@ -57,7 +57,7 @@ const Expertise = () => {
     if (isHovering) return; // Pause cycling on hover
     const interval = setInterval(() => {
       setAutoIndex(prev => (prev + 1) % expertise.length);
-    }, 2000);
+    }, 3000);
     return () => clearInterval(interval);
   }, [isHovering]);
 
