@@ -3,42 +3,132 @@
 @theme {
   --font-serif: "Noto Serif", serif;
   --font-sans: "Manrope", sans-serif;
-  --color-canvas: #131313;
-  --color-gold: #e9c349;
-  --color-gold-hover: #d4af37;
-  --color-surface-container: #1f2020;
-  --color-surface-container-high: #2a2a2a;
+  
+  /* Color Palette - Aura/Cyntax Premium Dark */
+  --color-background: #0a0a0a;
+  --color-foreground: #e4e2e1;
+  --color-primary: #e9c349; /* Approved Muted Gold */
+  --color-primary-foreground: #0a0a0a;
+  --color-muted: #131313;
+  --color-muted-foreground: #a3a3a3;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-card: #131313;
+  --color-card-foreground: #e4e2e1;
+  --color-popover: #131313;
+  --color-popover-foreground: #e4e2e1;
+  
+  /* Custom Animations */
+  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-spin-slow: spin 10s linear infinite;
+  --animate-pulse-slow: pulse 3.5s ease-in-out infinite;
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 :root {
-  --background: #131313;
+  --background: #0a0a0a;
   --foreground: #e4e2e1;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-sans), sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar for premium dark feel */
+/* Custom premium scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #131313;
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
-  border-radius: 4px;
+  background: #222222;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #e9c349;
 }
+
+/* Hover underline effect from cyntax.dev */
+.hover-underline {
+  position: relative;
+}
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Custom bounce / shake hover keyframes */
+@keyframes hoverBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4.5px); }
+}
+.hover-bounce:hover {
+  animation: hoverBounce 0.6s ease infinite;
+}
+
+@keyframes hoverShake {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+.hover-shake:hover {
+  animation: hoverShake 0.4s ease infinite;
+}
+
+/* Shimmer button style */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 30%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: all 0.6s ease;
+  pointer-events: none;
+}
+.btn-shimmer:hover::after {
+  left: 120%;
+}
+
 
