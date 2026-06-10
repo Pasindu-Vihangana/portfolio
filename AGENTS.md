@@ -1,5 +1,11 @@
 <!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# Frontend Coding Standards (Next.js/React)
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+-   Always use components and props.
+-   Always create new files for new components, don't edit existing ones unless necessary.
+-   Maintain a proper heirachy of components.
+-   Avoid repetitive code, create functions/components for repetitive code.
+-   use sperate files for long strings/variables that will be used across multiple components.
+-   use sperate files for each functionality, ex: if you need to fetch data from an api, create a file for that api call.
+-   use sperate .css files for styling.
 <!-- END:nextjs-agent-rules -->
