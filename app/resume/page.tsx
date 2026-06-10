@@ -39,7 +39,7 @@ export default function ResumePage() {
   return (
     <div className="flex-1 bg-background text-foreground py-16 sm:py-24 font-sans animate-fade-in-up">
       <div className="container mx-auto px-6 max-w-7xl">
-        
+
         {/* Page Header */}
         <div className="max-w-2xl mb-16">
           <div className="flex items-center gap-2 text-primary mb-4">
@@ -58,10 +58,10 @@ export default function ResumePage() {
 
         {/* 2-Column Grid matching Cyntax */}
         <div className="grid gap-8 lg:grid-cols-[1fr_400px] gap-16 xl:gap-24">
-          
+
           {/* Left Main Column */}
           <div className="space-y-12">
-            
+
             {/* Profile Section */}
             <section className="space-y-4">
               <h2 className="flex items-center gap-2 uppercase tracking-widest text-primary font-bold text-xs">
@@ -101,9 +101,9 @@ export default function ResumePage() {
                 <Icons.Briefcase className="w-4 h-4 text-primary" />
                 Experience
               </h2>
-              
+
               <div className="relative border-l border-border pl-6 space-y-8 py-2">
-                
+
                 {/* SRQ Robotics */}
                 <div className="relative">
                   <div className="absolute -left-[30px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-primary bg-background ring-4 ring-primary/20 z-10">
@@ -149,82 +149,127 @@ export default function ResumePage() {
               </div>
             </section>
 
-            {/* Education Section */}
+            {/* Key Engineering Projects Section */}
             <section className="space-y-6">
               <h2 className="flex items-center gap-2 uppercase tracking-widest text-primary font-bold text-xs">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-primary">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                  <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                  <path d="M12 11h4" />
+                  <path d="M12 15h4" />
+                  <path d="M8 11h.01" />
+                  <path d="M8 15h.01" />
                 </svg>
-                Education
+                Key Engineering Projects
               </h2>
 
               <div className="space-y-6">
-                <div className="border border-border/50 p-5 rounded-xl bg-card/20">
-                  <h3 className="text-sm font-bold text-foreground">
-                    B.Eng.Tech (Hons) in Mechatronics Technology
-                  </h3>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    University of Sri Jayewardenepura, Sri Lanka
-                  </p>
-                  <p className="text-[10px] text-muted-foreground uppercase font-bold mt-1 tracking-wider">
-                    Graduated June 2022
-                  </p>
-                  
-                  <div className="flex gap-6 mt-4 pt-4 border-t border-border/40 text-xs">
-                    <div>
-                      <span className="text-[10px] text-muted-foreground block uppercase font-bold tracking-wider">GPA achieved</span>
-                      <span className="text-sm font-bold font-mono text-foreground">3.64 / 4.00</span>
+                {[
+                  {
+                    title: "Falcon Tracker: Long-Range Transmitter",
+                    role: "RF & Embedded Hardware Lead",
+                    tags: ["Semtech SX1268", "LoRa RF", "RTOS", "SolidWorks"],
+                    bullets: [
+                      "Designed a custom power-amplified sub-15g LoRa tracking transmitter achieving verified 250 km+ air-to-ground telemetry transmission.",
+                      "Engineered a waterproof compact enclosure body with integrated 0.5 mm thread pitch ISO Metric battery cap interfaces in SolidWorks.",
+                      "Wrote power-optimized Nordic nRF52 RTOS task schedulers for extended battery lifecycles in critical search environments."
+                    ]
+                  },
+                  {
+                    title: "Wearable BLE Fitness Tracker",
+                    role: "Firmware & PCB Designer",
+                    tags: ["PCB Design", "Sensor Fusion", "BLE", "DSP", "MATLAB"],
+                    bullets: [
+                      "Designed a 15×25 mm 4-layer impedance-matched high-density PCB wearable housing a 6-DoF sensor fusion IMU.",
+                      "Wrote firmware streaming raw accelerometer/gyroscope channels at 100 Hz over custom Bluetooth Low Energy (BLE) profiles.",
+                      "Coded on-device DSP noise filters and velocity integration estimators, validating dynamics in MATLAB."
+                    ]
+                  },
+                  {
+                    title: "QR2Wallet: Standalone Cryptographic iOS App",
+                    role: "Lead iOS Developer",
+                    tags: ["Swift", "OpenSSL", "Cryptography", "Apple Wallet SDK"],
+                    bullets: [
+                      "Created a serverless, 100% offline iOS app to scan, parse, and compile event/ticket barcodes into Apple Wallet passes.",
+                      "Embedded and integrated a C-based distribution of OpenSSL for localized PKCS#7 pass cryptographic signing on-device.",
+                      "Bypassed traditional cloud database dependencies to ensure absolute data privacy and real-time offline availability."
+                    ]
+                  },
+                  {
+                    title: "DanceBetter AI Coach & Video Analysis",
+                    role: "AI & Motion Systems Co-Developer",
+                    tags: ["PyTorch", "OpenCV", "MediaPipe Pose", "React SaaS"],
+                    bullets: [
+                      "Co-developed an AI-driven movement evaluator tracking 33 pose landmarks from custom video uploads with 98.4% calibration.",
+                      "Wrote frame-by-frame joint angle alignment algorithms comparing user posture coordinates against reference professional tracks.",
+                      "Deployed custom digital filter algorithms to smooth coordinate jitter and generate real-time performance feedback curves."
+                    ]
+                  },
+                  {
+                    title: "3D Dancer Motion Sync",
+                    role: "Lead 3D & Graphics Engineer",
+                    tags: ["Three.js", "WebGL", "MediaPipe Tasks", "TypeScript"],
+                    bullets: [
+                      "Built a WebGL dashboard extracting 3D skeletal joints from video streams and mapping coordinates onto rigged GLTF characters.",
+                      "Solved kinematic joint angles using custom trigonometry solvers, mapping MediaPipe Euler/Quaternion angles onto 3D character bones.",
+                      "Implemented real-time character auto-alignment to calibrate spatial offsets and scale discrepancies between dancers."
+                    ]
+                  },
+                  {
+                    title: "Garment Piece Counter & Classifier",
+                    role: "Computer Vision Engineer (MAS Holdings Pilot)",
+                    tags: ["YOLO", "OpenCV", "CNN", "Industrial Automation"],
+                    bullets: [
+                      "Designed a real-time computer vision counting POC for fabric inventory tracking in collaboration with MAS Holdings.",
+                      "Developed robust YOLO object detection and custom CNN sorting models capable of counting stacked fabrics under variable factory lighting.",
+                      "Reduced average fabric batch manual audit overhead times by over 80% during pilot deployments."
+                    ]
+                  },
+                  {
+                    title: "Shadow Projection Cylinder",
+                    role: "Mathematical Modeling Developer",
+                    tags: ["Python", "3D Geometry", "STL Parsing", "Ray Tracing"],
+                    bullets: [
+                      "Designed a mathematical utility mapping planar 2D silhouette shapes onto a 3D cylinder via inverse radial projection equations.",
+                      "Wrote ray-tracing simulation engines to predict shadow dispersion and compensate for non-linear point-light distortion.",
+                      "Wrote template exporters creating DXF laser patterns and exporting closed, hollow manifold STL meshes for 3D printing."
+                    ]
+                  }
+                ].map((proj, idx) => (
+                  <div key={idx} className="border border-border/50 p-5 rounded-xl bg-card/10 space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                      <div>
+                        <h3 className="text-sm font-bold text-foreground">
+                          {proj.title}
+                        </h3>
+                        <p className="text-[10px] text-primary font-bold tracking-wider mt-0.5 uppercase font-mono">
+                          {proj.role}
+                        </p>
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        {proj.tags.slice(0, 3).map((tag, tIdx) => (
+                          <span key={tIdx} className="px-1.5 py-0.5 bg-muted border border-border/40 rounded text-[9px] font-mono text-muted-foreground uppercase">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <div>
-                      <span className="text-[10px] text-muted-foreground block uppercase font-bold tracking-wider">Honours Class</span>
-                      <span className="text-sm font-bold text-foreground">Second Upper</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="border border-border/50 p-5 rounded-xl bg-card/20">
-                  <span className="inline-block px-2 py-0.5 text-[9px] uppercase font-bold tracking-widest bg-primary/10 text-primary border border-primary/25 rounded-md mb-2">
-                    Research Publication &amp; Award
-                  </span>
-                  <h4 className="text-xs font-bold text-foreground">
-                    Best Presentation Award — ICIET 2021
-                  </h4>
-                  <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-                    Published and presented: <em>'An algorithmic approach to minimise text-based programming for microcontrollers using graphical netlist generation'</em> in Electronics Category.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            {/* Awards & Accolades */}
-            <section className="space-y-6">
-              <h2 className="flex items-center gap-2 uppercase tracking-widest text-primary font-bold text-xs">
-                <Icons.Award className="w-4 h-4 text-primary" />
-                Accolades
-              </h2>
-              
-              <div className="grid sm:grid-cols-2 gap-4">
-                {AWARDS.map((award, idx) => (
-                  <div key={idx} className="border border-border/50 p-4 rounded-xl bg-card/20 hover:border-primary/20 transition-colors duration-300">
-                    <div className="flex items-center gap-1.5 text-primary mb-2">
-                      <Icons.Award className="w-3.5 h-3.5" />
-                      <span className="text-[9px] uppercase font-bold tracking-wider">{award.context}</span>
-                    </div>
-                    <h4 className="text-xs font-bold text-foreground">{award.title}</h4>
-                    <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
-                      {award.desc}
-                    </p>
+                    <ul className="list-disc pl-4 space-y-1 text-xs text-muted-foreground leading-relaxed">
+                      {proj.bullets.map((bullet, bIdx) => (
+                        <li key={bIdx}>{bullet}</li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
             </section>
 
+            {/* Education and Accolades sections moved to the right column to prevent layout imbalances */}
+
           </div>
 
           {/* Right Sidebar Column */}
           <div className="space-y-8">
-            
+
             {/* Personal Details */}
             <section className="border border-border/50 p-6 rounded-xl bg-card/10 space-y-4">
               <h2 className="flex items-center gap-2 uppercase tracking-widest text-primary font-bold text-xs border-b border-border/40 pb-3">
@@ -236,7 +281,7 @@ export default function ResumePage() {
                 </svg>
                 Personal Details
               </h2>
-              
+
               <div className="space-y-3 text-xs">
                 <div className="flex items-center justify-between">
                   <span className="text-muted-foreground">Name</span>
@@ -264,6 +309,54 @@ export default function ResumePage() {
               </div>
             </section>
 
+            {/* Education Section */}
+            <section className="border border-border/50 p-6 rounded-xl bg-card/10 space-y-4">
+              <h2 className="flex items-center gap-2 uppercase tracking-widest text-primary font-bold text-xs border-b border-border/40 pb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-primary">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+                </svg>
+                Education
+              </h2>
+
+              <div className="space-y-6">
+                <div className="border border-border/50 p-5 rounded-xl bg-card/20">
+                  <h3 className="text-sm font-bold text-foreground">
+                    B.Eng.Tech (Hons) in Mechatronics Technology
+                  </h3>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    University of Sri Jayewardenepura, Sri Lanka
+                  </p>
+                  <p className="text-[10px] text-muted-foreground uppercase font-bold mt-1 tracking-wider">
+                    Graduated June 2022
+                  </p>
+
+                  <div className="flex gap-6 mt-4 pt-4 border-t border-border/40 text-xs">
+                    <div>
+                      <span className="text-[10px] text-muted-foreground block uppercase font-bold tracking-wider">GPA achieved</span>
+                      <span className="text-sm font-bold font-mono text-foreground">3.64 / 4.00</span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-muted-foreground block uppercase font-bold tracking-wider">Honours Class</span>
+                      <span className="text-sm font-bold text-foreground">Second Upper</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border border-border/50 p-5 rounded-xl bg-card/20">
+                  <span className="inline-block px-2 py-0.5 text-[9px] uppercase font-bold tracking-widest bg-primary/10 text-primary border border-primary/25 rounded-md mb-2">
+                    Research Publication &amp; Award
+                  </span>
+                  <h4 className="text-xs font-bold text-foreground">
+                    Best Presentation Award — ICIET 2021
+                  </h4>
+                  <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                    Published and presented: <em>'An algorithmic approach to minimise text-based programming for microcontrollers using graphical netlist generation'</em> in Electronics Category.
+                  </p>
+                </div>
+              </div>
+            </section>
+
             {/* Sydney Accord accreditation block */}
             <section className="bg-gradient-to-br from-primary/10 to-card/40 border border-primary/20 p-6 rounded-xl space-y-4">
               <div className="flex items-center gap-2 text-primary">
@@ -278,6 +371,29 @@ export default function ResumePage() {
               </p>
             </section>
 
+            {/* Awards & Accolades */}
+            <section className="border border-border/50 p-6 rounded-xl bg-card/10 space-y-4">
+              <h2 className="flex items-center gap-2 uppercase tracking-widest text-primary font-bold text-xs border-b border-border/40 pb-3">
+                <Icons.Award className="w-4 h-4 text-primary" />
+                Accolades
+              </h2>
+
+              <div className="space-y-4">
+                {AWARDS.map((award, idx) => (
+                  <div key={idx} className="border border-border/50 p-4 rounded-xl bg-card/20 hover:border-primary/20 transition-colors duration-300">
+                    <div className="flex items-center gap-1.5 text-primary mb-2">
+                      <Icons.Award className="w-3.5 h-3.5" />
+                      <span className="text-[9px] uppercase font-bold tracking-wider">{award.context}</span>
+                    </div>
+                    <h4 className="text-xs font-bold text-foreground">{award.title}</h4>
+                    <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
+                      {award.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
             {/* Professional Skills sidebar progress list */}
             <section className="border border-border/50 p-6 rounded-xl bg-card/10 space-y-4">
               <h2 className="flex items-center gap-2 uppercase tracking-widest text-primary font-bold text-xs border-b border-border/40 pb-3">
@@ -286,7 +402,7 @@ export default function ResumePage() {
                 </svg>
                 Core Capabilities
               </h2>
-              
+
               <div className="space-y-4">
                 {[
                   { name: "Control Systems", rate: "95%" },
@@ -312,7 +428,7 @@ export default function ResumePage() {
                 </svg>
                 Languages
               </h2>
-              
+
               <div className="space-y-3">
                 <div>
                   <div className="flex justify-between text-xs mb-1">
@@ -346,7 +462,7 @@ export default function ResumePage() {
                 </svg>
                 Interests &amp; Trivia
               </h2>
-              
+
               <div className="flex flex-wrap gap-2 pt-1">
                 {["Martial Arts (Fighter)", "Stand-up Comedy", "Drone Racing", "3D Modeling", "Biomechanics"].map((t) => (
                   <span key={t} className="px-2.5 py-1 text-[10px] uppercase font-bold tracking-wider bg-card border border-border text-muted-foreground rounded-lg">
