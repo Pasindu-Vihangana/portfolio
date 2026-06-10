@@ -1,86 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import { Icons } from "../components/Icons";
-
-interface Project {
-  id: string;
-  title: string;
-  category: "hardware" | "software";
-  desc: string;
-  img: string;
-  tags: string[];
-  link: string;
-}
-
-const PROJECTS: Project[] = [
-  {
-    id: "falcon-tracker",
-    title: "Falcon Tracker",
-    category: "hardware",
-    desc: "Miniature autonomous tracking device with 70 km+ range. Powered by Nordic SoC and running a custom low-power RTOS scheduling model. Under 15g total weight.",
-    img: "/assets/falcon_tracker.png",
-    tags: ["Nordic SoC", "RTOS", "RF Hardware", "Low Power"],
-    link: "https://srqrobotics.com"
-  },
-  {
-    id: "fitness-tracker",
-    title: "Fitness Tracker",
-    category: "hardware",
-    desc: "Biomechanical athletic tracker incorporating 6-DoF IMU and pressure sensors. Streams orientation rates and velocity metrics via BLE on Nordic nRF52 SoC.",
-    img: "/assets/fitness_tracker.png",
-    tags: ["nRF52", "IMU Fusion", "BLE", "4-layer PCB"],
-    link: "https://srqrobotics.com"
-  },
-  {
-    id: "dance-better",
-    title: "DanceBetter AI",
-    category: "software",
-    desc: "AI SaaS utilizing computer vision human pose estimation to track posture, timing, and coordinate balance for rehabilitation and biomechanical modeling.",
-    img: "/assets/dance_better.png",
-    tags: ["Computer Vision", "Pose Estimation", "Next.js", "Python"],
-    link: "https://dancebetter.org"
-  },
-  {
-    id: "xfly",
-    title: "X-Fly STEM Drone",
-    category: "hardware",
-    desc: "Award-winning programmable educational quadcopter drone. Implements cascaded PID stabilization, EKF altitude estimation, and BLE control on ESP32.",
-    img: "/assets/xfly_drone.png",
-    tags: ["ESP32", "PID Control", "EKF Fusion", "Python SDK"],
-    link: "https://qubebots.com"
-  },
-  {
-    id: "visual-compiler",
-    title: "MCU Netlist Compiler",
-    category: "software",
-    desc: "Research-grade graphical visual compiler converting node layouts directly into machine compiled executables without C++ syntax coding.",
-    img: "/assets/hero_mechatronics.png",
-    tags: ["Python", "Netlist Compiler", "Visual Programming", "ICIET Award"],
-    link: "https://github.com/Pasindu-Vihangana/Arduino-Visual-Programmer"
-  },
-  {
-    id: "visual-interpreter",
-    title: "Arduino Netlist Interpreter",
-    category: "software",
-    desc: "Full emulation runtime for Arduino microcontrollers executing netlists generated from the MCU Visual compiler.",
-    img: "/assets/hero_mechatronics.png",
-    tags: ["C++", "Parser", "AVR Emulation"],
-    link: "https://github.com/Pasindu-Vihangana/Arduino-Interpreter"
-  }
-];
+import { PROJECTS, Project } from "../data/projects";
+import ProjectCard from "../components/ProjectCard/ProjectCard";
+import ProjectModal from "../components/ProjectModal/ProjectModal";
 
 export default function ExperiencePage() {
-  const [projectFilter, setProjectFilter] = useState<"all" | "hardware" | "software">("all");
+  const [projectFilter, setProjectFilter] = useState<"all" | "hardware" | "ai" | "3d" | "mobile">("all");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filteredProjects = projectFilter === "all"
     ? PROJECTS
     : PROJECTS.filter((p) => p.category === projectFilter);
 
   return (
-    <div className="flex-1 bg-background text-foreground py-16 sm:py-24 font-sans animate-fade-in-up">
-      <div className="container mx-auto px-6 max-w-7xl">
+    <div className="flex-1 bg-background text-foreground py-16 sm:py-24 font-sans relative">
+      <div className="container mx-auto px-6 max-w-7xl animate-fade-in-up">
         
         {/* Page Header */}
         <div className="max-w-2xl mb-16">
@@ -254,89 +190,48 @@ export default function ExperiencePage() {
             </div>
 
             {/* Dynamic Filter Buttons */}
-            <div className="flex bg-card border border-border/60 p-1 rounded-full w-fit text-xs font-bold text-muted-foreground select-none">
-              <button 
-                onClick={() => setProjectFilter("all")}
-                className={`px-4 py-2 rounded-full transition-all cursor-pointer ${
-                  projectFilter === "all" ? "bg-primary text-primary-foreground" : "hover:text-foreground"
-                }`}
-              >
-                ALL
-              </button>
-              <button 
-                onClick={() => setProjectFilter("hardware")}
-                className={`px-4 py-2 rounded-full transition-all cursor-pointer ${
-                  projectFilter === "hardware" ? "bg-primary text-primary-foreground" : "hover:text-foreground"
-                }`}
-              >
-                HARDWARE
-              </button>
-              <button 
-                onClick={() => setProjectFilter("software")}
-                className={`px-4 py-2 rounded-full transition-all cursor-pointer ${
-                  projectFilter === "software" ? "bg-primary text-primary-foreground" : "hover:text-foreground"
-                }`}
-              >
-                AI &amp; COMPILERS
-              </button>
+            <div className="flex bg-[#131313]/60 border border-border/60 p-1 rounded-full w-fit text-[10px] font-bold text-muted-foreground select-none flex-wrap gap-1">
+              {[
+                { filter: "all", label: "ALL" },
+                { filter: "hardware", label: "HARDWARE & IOT" },
+                { filter: "ai", label: "AI & CV" },
+                { filter: "3d", label: "3D & WEB" },
+                { filter: "mobile", label: "MOBILE & IOS" }
+              ].map((item) => (
+                <button
+                  key={item.filter}
+                  onClick={() => setProjectFilter(item.filter as any)}
+                  className={`px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    projectFilter === item.filter
+                      ? "bg-primary text-primary-foreground font-bold"
+                      : "hover:text-foreground"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Projects Bento Grid */}
+          {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((p) => (
-              <div 
-                key={p.id} 
-                className="group bg-card/40 border border-border/60 rounded-2xl overflow-hidden hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 flex flex-col"
-              >
-                {/* Image Wrap */}
-                <div className="relative h-48 w-full bg-muted/20 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10" />
-                  <div className="w-full h-full flex items-center justify-center bg-muted/10 text-muted-foreground">
-                    <svg className="w-12 h-12 opacity-35" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-                      <rect x="2" y="2" width="20" height="20" rx="2" />
-                      <circle cx="12" cy="12" r="4" />
-                    </svg>
-                  </div>
-                  <div className="absolute bottom-4 left-4 z-20">
-                    <span className="px-2 py-0.5 text-[9px] uppercase font-bold tracking-widest bg-primary/20 text-primary border border-primary/25 rounded-md">
-                      {p.category}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-5 flex flex-col flex-1 space-y-4">
-                  <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors flex items-center justify-between">
-                    <span>{p.title}</span>
-                    <a 
-                      href={p.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="opacity-0 group-hover:opacity-100 text-primary transition-all duration-300 hover:scale-110"
-                    >
-                      <Icons.ExternalLink className="w-4 h-4" />
-                    </a>
-                  </h3>
-                  
-                  <p className="text-xs text-muted-foreground leading-relaxed flex-1">
-                    {p.desc}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {p.tags.map((t) => (
-                      <span key={t} className="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-muted border border-border/80 text-muted-foreground">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            {filteredProjects.map((proj) => (
+              <ProjectCard
+                key={proj.id}
+                project={proj}
+                onClick={() => setSelectedProject(proj)}
+                exploreLabel="Explore Case Study"
+              />
             ))}
           </div>
         </section>
-
       </div>
+
+      {/* Project Details Modal */}
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </div>
   );
 }

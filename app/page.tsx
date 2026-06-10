@@ -4,6 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "./components/Icons";
+import { PROJECTS, Project } from "./data/projects";
+import ProjectCard from "./components/ProjectCard/ProjectCard";
+import ProjectModal from "./components/ProjectModal/ProjectModal";
 
 // Local inline icons for page sections and cards
 const HomeIcons = {
@@ -198,189 +201,7 @@ const SKILLS_CATEGORIES = [
   }
 ];
 
-const PROJECTS = [
-  {
-    title: "Falcon Tracker",
-    category: "Hardware & IoT",
-    specs: "Semtech SX1268 LoRa | 27 dBm Tx Power | >250 km Air Range",
-    description: "An autonomous falconry tracking transmitter utilizing the Semtech SX1268 LoRa transceiver. Designed for range-critical applications, it integrates a power-amplified transmitter, low-noise receiver, custom 3D-printed enclosure, and precision-engineered mechanical components.",
-    tags: ["Semtech SX1268", "LoRa RF", "RTOS", "3D CAD (SolidWorks)", "PCB Design"],
-    images: [
-      "/projects/Falcon Tracker/Transmitter-Assembly.png",
-      "/projects/Falcon Tracker/Transmitter-Assembly-X-Ray.png",
-      "/projects/Falcon Tracker/receiver_close_up.jpg",
-      "/projects/Falcon Tracker/Battery Cap POV.png",
-      "/projects/Falcon Tracker/prototype 1.png",
-      "/projects/Falcon Tracker/Charger PCB.png"
-    ],
-    detailedSpecs: {
-      "RF Transceiver": "Semtech SX1268 (sub-GHz LoRa)",
-      "Transmit Power": "27 dBm (via integrated Power Amplifier)",
-      "Receiver Gain": "20 dBm (via Low Noise Amplifier)",
-      "Air-to-Ground Range": "> 250 km (field tested)",
-      "Ground-to-Ground Range": "~ 12 km",
-      "Battery Chamber Threads": "0.5 mm pitch ISO Metric profile",
-      "Antenna Port": "Female SMA (1/4\"-36UNS)"
-    },
-    features: [
-      "Achieved verified 250km air-to-ground telemetry range.",
-      "Custom 3-way multi-charger PCB with overcharge protection.",
-      "O-ring sealed waterproof battery compartment with textured tightening cap.",
-      "Ultra-lightweight (<15g) enclosure design optimized for avian payloads."
-    ]
-  },
-  {
-    title: "BLE Fitness Tracker",
-    category: "Hardware & IoT",
-    specs: "15×25 mm | 4-Layer PCB | 6-DoF IMU | BLE 100Hz Stream",
-    description: "A state-of-the-art, power-efficient wearable fitness tracker designed to capture intricate motion metrics, track velocity curves, and measure displacement of specific physical activities in real-time.",
-    tags: ["PCB Design", "Sensor Fusion", "DSP Filtering", "Bluetooth Low Energy", "MATLAB"],
-    images: [
-      "/projects/Fitness Tracker/prototype_v2_2.png",
-      "/projects/Fitness Tracker/prototype_v2_1.png",
-      "/projects/Fitness Tracker/live_demo.png"
-    ],
-    detailedSpecs: {
-      "Form Factor": "15 mm x 25 mm ultra-compact",
-      "PCB Design": "4-Layer Impedance Matched High-Density",
-      "Telemetry rate": "100 Hz real-time streaming",
-      "Sensors": "6-DoF IMU (Accelerometer & Gyroscope)",
-      "Interface": "Bluetooth Low Energy (BLE) custom profile"
-    },
-    features: [
-      "Developed high-precision on-device DSP filters to isolate workout noise.",
-      "Streams real-time motion metrics to a Python dashboard at 100Hz.",
-      "Optimized battery profile for low duty cycle power consumption.",
-      "Designed compact 4-layer PCB layout verifying signal integrity."
-    ]
-  },
-  {
-    title: "DanceBetter AI Coach",
-    category: "AI & Computer Vision",
-    specs: "Pose Estimation | Landmark Tracking | Dynamic Assessment",
-    description: "An experimental, premium AI-powered dance coaching platform designed to help dancers of all levels analyze, understand, and refine their techniques. Integrates real-time pose estimation and movement coordination assessment.",
-    tags: ["PyTorch", "OpenCV", "Pose Estimation", "React SaaS", "MediaPipe"],
-    images: [
-      "/projects/DanceBetter/upload.png",
-      "/projects/DanceBetter/skeleton-view.jpeg",
-      "/projects/DanceBetter/analysis.png",
-      "/projects/DanceBetter/comparison.jpeg",
-      "/projects/DanceBetter/Schedule.png"
-    ],
-    detailedSpecs: {
-      "Model Framework": "MediaPipe Pose & PyTorch Classifier",
-      "Accuracy": "98.4% Pose Landmark Calibration",
-      "Framerate": "60.0 FPS Processing Rate",
-      "Feedback System": "Dynamic coordinate distance scoring"
-    },
-    features: [
-      "Extracts and tracks 33 critical skeletal joints from video uploads.",
-      "Compares user performance against reference coaches frame-by-frame.",
-      "Generates interactive performance curves highlighting timing discrepancies.",
-      "Dashboard includes personalized scheduling and progress tracking telemetry."
-    ]
-  },
-  {
-    title: "3D Dancer Motion Sync",
-    category: "3D & Web",
-    specs: "Three.js | MediaPipe Pose | 3D GLTF Character Sync",
-    description: "A high-performance web dashboard that extracts 3D skeleton joints from video footage using MediaPipe Tasks and maps them in real-time onto a 3D GLTF character model (dancer.glb) in a Three.js scene.",
-    tags: ["Three.js", "MediaPipe Tasks", "GLTF Animation", "WebGL", "TypeScript"],
-    images: [
-      "/projects/Skeleton Mocap 3D/Mocap.png",
-      "/projects/Skeleton Mocap 3D/auto-align.png"
-    ],
-    detailedSpecs: {
-      "3D Engine": "Three.js (WebGL)",
-      "Model Format": "GLTF / GLB Character Rig",
-      "Joint Solver": "Custom Euler / Quaternion keypoint mapping",
-      "Video Sync": "Interactive video frame-by-frame alignment"
-    },
-    features: [
-      "Developed custom keypoint mapping to translate 2D/3D landmarks to bone angles.",
-      "Integrates MediaPipe Pose estimation directly inside the web browser.",
-      "Provides auto-alignment controls to calibrate scale and offsets between characters.",
-      "Smooth character rendering using standard WebGL shaders."
-    ]
-  },
-  {
-    title: "Garment Piece Counter",
-    category: "AI & Computer Vision",
-    specs: "Real-time YOLO | Count Validation | MAS Holdings POC",
-    description: "A real-time computer vision and machine learning system designed to automate garment piece counting and quality control, developed in partnership with MAS Holdings as a high-accuracy inventory tracking solution.",
-    tags: ["YOLO", "OpenCV", "Python", "Machine Learning", "Industrial Automation"],
-    images: [
-      "/projects/Garment Piece Counter/GPC-Screenshot.png"
-    ],
-    detailedSpecs: {
-      "Partner": "MAS Holdings (Industrial Pilot)",
-      "Core Models": "YOLO Object Detection & custom CNN classifier",
-      "Functions": "Counting, defect check, color sorting",
-      "Lighting": "Illumination-invariant classification layers"
-    },
-    features: [
-      "Automates counting of stacked and folded fabric panels in real-time.",
-      "Reduces manual audit times by over 80% on the factory floor.",
-      "Deploys custom post-processing to ignore overlapping tags/labels.",
-      "Includes a dashboard to flag counts deviating from batch orders."
-    ]
-  },
-  {
-    title: "Shadow Projection Cylinder",
-    category: "Design & Prototyping",
-    specs: "Inverse Ray-Tracing | STL Template Export | Light Simulation",
-    description: "A complete Python tool that takes a silhouette image and generates a laser-cuttable cylinder template. When the cylinder is placed over a point light, the shadow it casts onto a floor surface reproduces the original image.",
-    tags: ["Python", "3D Geometry", "STL Export", "Image Binarization", "Ray Tracing Simulation"],
-    images: [
-      "/projects/Shadow Projection/output/phase6_3d_preview.png",
-      "/projects/Shadow Projection/output/phase4_simulation.png",
-      "/projects/Shadow Projection/output/phase1_binarization.png",
-      "/projects/Shadow Projection/output/phase2_cross_section.png",
-      "/projects/Shadow Projection/output/phase3_distortion.png",
-      "/projects/Shadow Projection/output/phase5_template.png",
-      "/projects/Shadow Projection/output/phase7_stl_export.png"
-    ],
-    detailedSpecs: {
-      "Projection Type": "Inverse Radial Light Ray Projection",
-      "Template Format": "DXF / SVG Flat Sheet & 3D STL Cylinder",
-      "Binarization": "Otsu's Adaptive Image Thresholding",
-      "Light Ray Engine": "Custom Vector-based Ray Casting Simulator"
-    },
-    features: [
-      "Calculates nonlinear distortion corrections for point light expansion.",
-      "Generates flat patterns ready for paper folding or laser engraving.",
-      "Generates 3D STL mesh with correct hollow thickness for 3D printing.",
-      "Simulates the projected shadow intensity before fabrication."
-    ]
-  },
-  {
-    title: "QR2Wallet",
-    category: "Mobile & iOS",
-    specs: "100% Serverless | On-Device OpenSSL PKCS#7 | Apple Wallet",
-    description: "A standalone, offline-capable iOS application designed to scan any QR code or barcode (such as movie tickets, event passes, national fuel cards) and compile and sign them into official Apple Wallet passes (.pkpass) directly on your device.",
-    tags: ["Swift", "iOS SDK", "Cryptography", "OpenSSL", "Apple Wallet Passes"],
-    images: [
-      "/projects/QR2Wallet/Screenshots/dashboard_grid_styled.png",
-      "/projects/QR2Wallet/Screenshots/pass_detail_styled.png",
-      "/projects/QR2Wallet/Screenshots/create_pass.png",
-      "/projects/QR2Wallet/Screenshots/pass_theme.png",
-      "/projects/QR2Wallet/Screenshots/pass_customization.png",
-      "/projects/QR2Wallet/Screenshots/dashboard_empty_dark.png"
-    ],
-    detailedSpecs: {
-      "Privacy Model": "100% Standalone & Offline signing",
-      "Signing Engine": "Embedded OpenSSL for iOS (C-layer)",
-      "Signature Type": "PKCS#7 cryptographic signing",
-      "Pass Format": "Standard Apple pkpass bundle (JSON + Signatures)"
-    },
-    features: [
-      "Bypasses standard cloud signing requirements, ensuring complete privacy.",
-      "Dynamically styles passes with user-selected colors, labels, and icons.",
-      "Performs real-time barcode translation (PDF417, Aztec, QR, Code 128).",
-      "Integrates fully with Apple's standard Add to Wallet prompt."
-    ]
-  }
-];
+
 
 const PRINCIPLES = [
   {
@@ -482,8 +303,12 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<"all" | "code" | "design" | "deliver">("all");
 
   const [projectFilter, setProjectFilter] = useState<string>("All");
-  const [selectedProject, setSelectedProject] = useState<typeof PROJECTS[0] | null>(null);
-  const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Typewriter effect logic
   useEffect(() => {
@@ -512,29 +337,6 @@ export default function Home() {
     timer = setTimeout(handleType, typingSpeed);
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, roleIndex, typingSpeed]);
-
-  // Close modal on Escape key press
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setSelectedProject(null);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  // Prevent scroll when modal is open
-  useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [selectedProject]);
 
   const filteredPrinciples = PRINCIPLES.filter(
     (p) => activeTab === "all" || p.category === activeTab
@@ -735,245 +537,22 @@ export default function Home() {
 
           {/* Grid of Projects */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PROJECTS.filter(p => projectFilter === "All" || p.category === projectFilter).map((proj, idx) => (
-              <div
-                key={idx}
-                onClick={() => {
-                  setSelectedProject(proj);
-                  setActiveImageIndex(0);
-                }}
-                className="group relative rounded-2xl bg-[#131313]/60 border border-border/80 overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-500 hover:translate-y-[-6px] hover:border-primary/20"
-              >
-                {/* Background glow on hover */}
-                <div className="absolute -inset-px bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                {/* Image container */}
-                <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
-                  <Image
-                    src={proj.images[0]}
-                    alt={proj.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-[1.05] transition-transform duration-700 ease-out brightness-[0.85] group-hover:brightness-[0.95]"
-                  />
-                  {/* Spec overlay */}
-                  <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-md border border-border px-2.5 py-1 rounded-md text-[9px] font-mono text-primary font-bold uppercase tracking-wider">
-                    {proj.category}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 space-y-4">
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-1">
-                      {proj.title}
-                    </h3>
-                    <p className="text-[10px] font-mono text-muted-foreground/80 font-semibold uppercase tracking-wider line-clamp-1 border-l border-primary/40 pl-2">
-                      {proj.specs.split("|")[0]}
-                    </p>
-                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                      {proj.description}
-                    </p>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {proj.tags.slice(0, 3).map((tag, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="px-2 py-0.5 bg-muted/85 border border-border/50 rounded text-[9px] font-semibold text-muted-foreground uppercase"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    {proj.tags.length > 3 && (
-                      <span className="px-2 py-0.5 bg-muted/85 border border-border/50 rounded text-[9px] font-semibold text-muted-foreground uppercase">
-                        +{proj.tags.length - 3}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Explore Trigger Button */}
-                  <div className="flex items-center gap-1.5 text-xs text-primary font-bold tracking-wider uppercase pt-4 border-t border-border/40 group-hover:text-foreground transition-colors duration-300">
-                    Explore Project
-                    <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
+            {PROJECTS.filter(p => projectFilter === "All" || p.categoryLabel === projectFilter).map((proj) => (
+              <ProjectCard
+                key={proj.id}
+                project={proj}
+                onClick={() => setSelectedProject(proj)}
+                exploreLabel="Explore Project"
+              />
             ))}
           </div>
         </div>
 
         {/* Project Details Modal */}
-        {selectedProject && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-fade-in">
-            {/* Backdrop Click */}
-            <div className="absolute inset-0 cursor-pointer" onClick={() => setSelectedProject(null)} />
-
-            {/* Modal Card */}
-            <div className="relative w-full max-w-4xl max-h-[90vh] md:max-h-[85vh] bg-[#111111] border border-border rounded-2xl overflow-y-auto shadow-2xl flex flex-col z-10 animate-scale-up">
-              
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/60 hover:bg-primary/20 border border-border text-foreground hover:text-primary transition-all cursor-pointer"
-                aria-label="Close modal"
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
-              <div className="grid md:grid-cols-12 gap-0 flex-1">
-                
-                {/* Left Column: Image Gallery & Carousel */}
-                <div className="md:col-span-7 bg-black/30 flex flex-col justify-between p-6 border-b md:border-b-0 md:border-r border-border min-h-[300px] md:min-h-0">
-                  
-                  {/* Main Image View */}
-                  <div className="relative flex-1 w-full aspect-[16/10] rounded-xl overflow-hidden border border-border bg-black/40">
-                    <Image
-                      src={selectedProject.images[activeImageIndex]}
-                      alt={`${selectedProject.title} screenshot ${activeImageIndex + 1}`}
-                      fill
-                      className="object-contain"
-                      priority
-                    />
-                    
-                    {/* Carousel Navigation Arrows */}
-                    {selectedProject.images.length > 1 && (
-                      <>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveImageIndex(prev => (prev === 0 ? selectedProject.images.length - 1 : prev - 1));
-                          }}
-                          className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-primary/20 border border-border text-foreground hover:text-primary transition-colors cursor-pointer"
-                          aria-label="Previous image"
-                        >
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                          </svg>
-                        </button>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveImageIndex(prev => (prev === selectedProject.images.length - 1 ? 0 : prev + 1));
-                          }}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-primary/20 border border-border text-foreground hover:text-primary transition-colors cursor-pointer"
-                          aria-label="Next image"
-                        >
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                          </svg>
-                        </button>
-                      </>
-                    )}
-                  </div>
-
-                  {/* Thumbnail Indicators */}
-                  {selectedProject.images.length > 1 && (
-                    <div className="flex flex-wrap gap-2 mt-4 justify-center">
-                      {selectedProject.images.map((img, iIdx) => (
-                        <button
-                          key={iIdx}
-                          onClick={() => setActiveImageIndex(iIdx)}
-                          className={`relative w-14 aspect-[16/10] rounded overflow-hidden border transition-all cursor-pointer ${
-                            activeImageIndex === iIdx ? "border-primary scale-105" : "border-border opacity-60 hover:opacity-100"
-                          }`}
-                        >
-                          <Image
-                            src={img}
-                            alt="Thumbnail"
-                            fill
-                            sizes="80px"
-                            className="object-cover"
-                          />
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* Right Column: Details & Technical Notes */}
-                <div className="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto space-y-6">
-                  
-                  <div className="space-y-6">
-                    <div>
-                      <span className="text-[10px] font-mono text-primary font-bold uppercase tracking-widest block mb-1">
-                        {selectedProject.category}
-                      </span>
-                      <h3 className="text-2xl font-bold font-serif text-foreground leading-tight">
-                        {selectedProject.title}
-                      </h3>
-                    </div>
-
-                    <p className="text-xs font-mono text-muted-foreground/80 leading-normal border-l border-primary/40 pl-3">
-                      {selectedProject.specs}
-                    </p>
-
-                    <div className="space-y-2">
-                      <h4 className="text-xs uppercase font-bold tracking-widest text-foreground">Project Overview</h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {selectedProject.description}
-                      </p>
-                    </div>
-
-                    {/* Key Features */}
-                    {selectedProject.features && (
-                      <div className="space-y-2">
-                        <h4 className="text-xs uppercase font-bold tracking-widest text-foreground">Key Highlights</h4>
-                        <ul className="list-none space-y-2">
-                          {selectedProject.features.map((feat, fIdx) => (
-                            <li key={fIdx} className="text-xs text-muted-foreground flex items-start gap-2">
-                              <span className="text-primary select-none mt-0.5">▪</span>
-                              <span>{feat}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {/* Detailed Tech Specifications */}
-                    <div className="space-y-2 pt-2">
-                      <h4 className="text-xs uppercase font-bold tracking-widest text-foreground">Technical Specifications</h4>
-                      <div className="border border-border/80 rounded-xl overflow-hidden text-xs bg-black/20">
-                        {Object.entries(selectedProject.detailedSpecs).map(([key, val], sIdx) => (
-                          <div
-                            key={sIdx}
-                            className={`grid grid-cols-12 p-2.5 ${
-                              sIdx % 2 === 0 ? "bg-[#131313]/30" : "bg-transparent"
-                            } ${sIdx !== 0 ? "border-t border-border/40" : ""}`}
-                          >
-                            <span className="col-span-5 font-mono text-[10px] uppercase text-muted-foreground">{key}</span>
-                            <span className="col-span-7 text-foreground font-medium">{val}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Tech Tags */}
-                  <div className="space-y-3 pt-4 border-t border-border/40">
-                    <div className="flex flex-wrap gap-1.5">
-                      {selectedProject.tags.map((tag, tIdx) => (
-                        <span
-                          key={tIdx}
-                          className="px-2.5 py-1 bg-muted border border-border/40 rounded text-[9px] font-semibold text-muted-foreground uppercase"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-          </div>
-        )}
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
       </section>
 
       {/* Principles Section */}
