@@ -201,142 +201,184 @@ const SKILLS_CATEGORIES = [
 const PROJECTS = [
   {
     title: "Falcon Tracker",
-    category: "Telemetry & RF",
-    specs: "70 km+ range | 12×40 mm | <15g | nRF52 RTOS",
-    description: "An autonomous falconry tracking device built with ultra-compact hardware constraints. Designed a custom RF architecture and low-power RTOS scheduling on a Nordic SoC for extreme range telemetry without payload weight penalties.",
-    tags: ["Embedded C++", "nRF52 SoC", "RF Design", "RTOS Scheduling"],
-    visual: (
-      <div className="relative w-full h-full flex flex-col justify-center items-center font-mono text-[10px] text-primary/60 p-6 space-y-4 select-none">
-        <div className="border border-border/80 rounded-xl p-4 bg-[#111]/85 w-full max-w-sm space-y-2.5">
-          <div className="flex justify-between border-b border-border/60 pb-1.5 text-foreground">
-            <span>TX_TELEMETRY: ACTIVE</span>
-            <span className="text-emerald-500 animate-pulse">● SIGNAL ON</span>
-          </div>
-          <div className="space-y-1">
-            <div className="flex justify-between"><span>FREQ:</span> <span className="text-foreground">868.15 MHz</span></div>
-            <div className="flex justify-between"><span>RANGE:</span> <span className="text-primary font-bold">72.4 km (Est)</span></div>
-            <div className="flex justify-between"><span>BATT:</span> <span className="text-foreground">3.82 V (87%)</span></div>
-            <div className="flex justify-between"><span>TEMP:</span> <span className="text-foreground">-4.2 °C</span></div>
-          </div>
-          <div className="h-12 bg-black/70 rounded flex items-end p-1.5 border border-border/40 overflow-hidden">
-            <div className="w-full flex items-end gap-[3px] h-full">
-              <div className="bg-primary/30 w-full h-[20%] animate-pulse"></div>
-              <div className="bg-primary/50 w-full h-[40%] animate-pulse"></div>
-              <div className="bg-primary/80 w-full h-[90%]"></div>
-              <div className="bg-primary/45 w-full h-[30%] animate-pulse"></div>
-              <div className="bg-primary/60 w-full h-[70%]"></div>
-              <div className="bg-primary/30 w-full h-[15%]"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
+    category: "Hardware & IoT",
+    specs: "Semtech SX1268 LoRa | 27 dBm Tx Power | >250 km Air Range",
+    description: "An autonomous falconry tracking transmitter utilizing the Semtech SX1268 LoRa transceiver. Designed for range-critical applications, it integrates a power-amplified transmitter, low-noise receiver, custom 3D-printed enclosure, and precision-engineered mechanical components.",
+    tags: ["Semtech SX1268", "LoRa RF", "RTOS", "3D CAD (SolidWorks)", "PCB Design"],
+    images: [
+      "/projects/Falcon Tracker/Transmitter-Assembly.png",
+      "/projects/Falcon Tracker/Transmitter-Assembly-X-Ray.png",
+      "/projects/Falcon Tracker/receiver_close_up.jpg",
+      "/projects/Falcon Tracker/Battery Cap POV.png",
+      "/projects/Falcon Tracker/prototype 1.png",
+      "/projects/Falcon Tracker/Charger PCB.png"
+    ],
+    detailedSpecs: {
+      "RF Transceiver": "Semtech SX1268 (sub-GHz LoRa)",
+      "Transmit Power": "27 dBm (via integrated Power Amplifier)",
+      "Receiver Gain": "20 dBm (via Low Noise Amplifier)",
+      "Air-to-Ground Range": "> 250 km (field tested)",
+      "Ground-to-Ground Range": "~ 12 km",
+      "Battery Chamber Threads": "0.5 mm pitch ISO Metric profile",
+      "Antenna Port": "Female SMA (1/4\"-36UNS)"
+    },
+    features: [
+      "Achieved verified 250km air-to-ground telemetry range.",
+      "Custom 3-way multi-charger PCB with overcharge protection.",
+      "O-ring sealed waterproof battery compartment with textured tightening cap.",
+      "Ultra-lightweight (<15g) enclosure design optimized for avian payloads."
+    ]
   },
   {
-    title: "Athlete Speed Tracker",
-    category: "Signal Processing & BLE",
-    specs: "15×25 mm | 6-DoF IMU | BLE Stream | MATLAB DSP",
-    description: "A wearable device executing real-time athlete velocity estimation. Designed a 4-layer PCB integrating a high-precision IMU, and wrote C++ firmware executing real-time DSP feature extraction and BLE data streaming to mobile apps.",
-    tags: ["PCB Design", "Sensor Fusion", "DSP Filtering", "MATLAB Prototyping"],
-    visual: (
-      <div className="relative w-full h-full flex flex-col justify-center items-center font-mono text-[10px] text-primary/60 p-6 select-none">
-        <div className="border border-border/80 rounded-xl p-4 bg-[#111]/85 w-full max-w-sm space-y-3">
-          <div className="flex justify-between border-b border-border/60 pb-1.5 text-foreground">
-            <span>IMU_DATA: STREAMING</span>
-            <span className="text-primary animate-pulse">● 100 Hz</span>
-          </div>
-          <div className="space-y-2.5">
-            <div>
-              <div className="flex justify-between mb-0.5"><span>ACCEL_X:</span><span className="text-foreground">+1.24 G</span></div>
-              <div className="w-full bg-black/70 h-1.5 rounded-full overflow-hidden border border-border/20"><div className="bg-primary h-full w-[65%]"></div></div>
-            </div>
-            <div>
-              <div className="flex justify-between mb-0.5"><span>ACCEL_Y:</span><span className="text-foreground">-0.78 G</span></div>
-              <div className="w-full bg-black/70 h-1.5 rounded-full overflow-hidden border border-border/20"><div className="bg-primary h-full w-[42%]"></div></div>
-            </div>
-            <div>
-              <span>VELOCITY:</span>
-              <div className="flex justify-between text-xs font-bold text-primary mt-1">
-                <span>3.84 m/s</span>
-                <span>DSP ACTIVE</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
+    title: "BLE Fitness Tracker",
+    category: "Hardware & IoT",
+    specs: "15×25 mm | 4-Layer PCB | 6-DoF IMU | BLE 100Hz Stream",
+    description: "A state-of-the-art, power-efficient wearable fitness tracker designed to capture intricate motion metrics, track velocity curves, and measure displacement of specific physical activities in real-time.",
+    tags: ["PCB Design", "Sensor Fusion", "DSP Filtering", "Bluetooth Low Energy", "MATLAB"],
+    images: [
+      "/projects/Fitness Tracker/prototype_v2_2.png",
+      "/projects/Fitness Tracker/prototype_v2_1.png",
+      "/projects/Fitness Tracker/live_demo.png"
+    ],
+    detailedSpecs: {
+      "Form Factor": "15 mm x 25 mm ultra-compact",
+      "PCB Design": "4-Layer Impedance Matched High-Density",
+      "Telemetry rate": "100 Hz real-time streaming",
+      "Sensors": "6-DoF IMU (Accelerometer & Gyroscope)",
+      "Interface": "Bluetooth Low Energy (BLE) custom profile"
+    },
+    features: [
+      "Developed high-precision on-device DSP filters to isolate workout noise.",
+      "Streams real-time motion metrics to a Python dashboard at 100Hz.",
+      "Optimized battery profile for low duty cycle power consumption.",
+      "Designed compact 4-layer PCB layout verifying signal integrity."
+    ]
   },
   {
-    title: "DanceBetter AI SaaS",
-    category: "Computer Vision & ML",
-    specs: "Pose Estimation | Coordinate Tracking | Feedback Scheduling",
-    description: "Co-developed an AI movement assessment system that evaluates pose, timing, balance, and coordination quality from video streams. Integrates real-time landmark coordinates with personalized training telemetry.",
-    tags: ["PyTorch", "OpenCV", "Pose Estimation", "React SaaS"],
-    visual: (
-      <div className="relative w-full h-full flex flex-col justify-center items-center p-6 text-primary/60 font-mono text-[10px] select-none">
-        <div className="border border-border/80 rounded-xl p-4 bg-[#111]/85 w-full max-w-sm space-y-3 relative overflow-hidden">
-          <div className="absolute top-2.5 right-2.5 flex gap-1 items-center">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping absolute"></span>
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 relative"></span>
-          </div>
-          <div className="border-b border-border/60 pb-1.5 text-foreground font-bold">
-            POSE_TRACKER: CALIBRATED
-          </div>
-          <div className="aspect-[4/3] bg-black/60 rounded border border-border/30 relative flex items-center justify-center overflow-hidden">
-            {/* Skeletal Pose wireframe */}
-            <svg viewBox="0 0 100 80" className="w-2/3 h-auto text-primary">
-              <circle cx="50" cy="15" r="5" fill="none" stroke="currentColor" strokeWidth="1.5" />
-              <line x1="50" y1="20" x2="50" y2="45" stroke="currentColor" strokeWidth="1.5" />
-              <line x1="50" y1="25" x2="35" y2="35" stroke="currentColor" strokeWidth="1.5" />
-              <line x1="50" y1="25" x2="65" y2="30" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              <line x1="35" y1="35" x2="30" y2="50" stroke="currentColor" strokeWidth="1.5" />
-              <line x1="65" y1="30" x2="75" y2="45" stroke="currentColor" strokeWidth="1.5" />
-              <line x1="50" y1="45" x2="40" y2="65" stroke="currentColor" strokeWidth="1.5" />
-              <line x1="50" y1="45" x2="60" y2="65" stroke="currentColor" strokeWidth="1.5" />
-              {/* Joint Dots */}
-              <circle cx="50" cy="25" r="1.5" fill="#e9c349" />
-              <circle cx="35" cy="35" r="1.5" fill="#e9c349" />
-              <circle cx="65" cy="30" r="1.5" fill="#e9c349" />
-              <circle cx="30" cy="50" r="1.5" fill="#e9c349" />
-              <circle cx="75" cy="45" r="1.5" fill="#e9c349" />
-            </svg>
-          </div>
-          <div className="flex justify-between">
-            <span>ACCURACY: <span className="text-foreground">98.4%</span></span>
-            <span>FPS: <span className="text-foreground">60.0</span></span>
-          </div>
-        </div>
-      </div>
-    )
+    title: "DanceBetter AI Coach",
+    category: "AI & Computer Vision",
+    specs: "Pose Estimation | Landmark Tracking | Dynamic Assessment",
+    description: "An experimental, premium AI-powered dance coaching platform designed to help dancers of all levels analyze, understand, and refine their techniques. Integrates real-time pose estimation and movement coordination assessment.",
+    tags: ["PyTorch", "OpenCV", "Pose Estimation", "React SaaS", "MediaPipe"],
+    images: [
+      "/projects/DanceBetter/upload.png",
+      "/projects/DanceBetter/skeleton-view.jpeg",
+      "/projects/DanceBetter/analysis.png",
+      "/projects/DanceBetter/comparison.jpeg",
+      "/projects/DanceBetter/Schedule.png"
+    ],
+    detailedSpecs: {
+      "Model Framework": "MediaPipe Pose & PyTorch Classifier",
+      "Accuracy": "98.4% Pose Landmark Calibration",
+      "Framerate": "60.0 FPS Processing Rate",
+      "Feedback System": "Dynamic coordinate distance scoring"
+    },
+    features: [
+      "Extracts and tracks 33 critical skeletal joints from video uploads.",
+      "Compares user performance against reference coaches frame-by-frame.",
+      "Generates interactive performance curves highlighting timing discrepancies.",
+      "Dashboard includes personalized scheduling and progress tracking telemetry."
+    ]
   },
   {
-    title: "X-Fly / QubeBots",
-    category: "Flight Stabilisation & UAV",
-    specs: "Cascaded PID | ESP32 Concurrency | EKF Altitude",
-    description: "A stabilized, user-programmable STEM drone. Solved ESP32 concurrency to run real-time cascaded PID stabilization, altitude estimation (accelerometer + ToF), and BLE SDK handlers simultaneously on a single microcontroller.",
-    tags: ["Cascaded PID", "EKF Fusion", "ESP32 Concurrency", "STEM Education"],
-    visual: (
-      <div className="relative w-full h-full flex flex-col justify-center items-center font-mono text-[10px] text-primary/60 p-6 select-none">
-        <div className="border border-border/80 rounded-xl p-4 bg-[#111]/85 w-full max-w-sm space-y-3">
-          <div className="flex justify-between border-b border-border/60 pb-1.5 text-foreground">
-            <span>FLIGHT_CONTROL: ARMED</span>
-            <span className="text-primary animate-pulse">● STABLE</span>
-          </div>
-          <div className="space-y-1.5">
-            <div className="flex justify-between"><span>ROLL PID:</span> <span className="text-foreground">P: 1.25, D: 0.45</span></div>
-            <div className="flex justify-between"><span>PITCH PID:</span> <span className="text-foreground">P: 1.25, D: 0.45</span></div>
-            <div className="flex justify-between"><span>YAW RATE:</span> <span className="text-foreground">0.005 °/s</span></div>
-            <div className="flex justify-between"><span>ALTITUDE:</span> <span className="text-primary font-bold">1.82 m (EKF)</span></div>
-          </div>
-          <div className="flex gap-2 text-[9px] pt-1">
-            <div className="flex-1 text-center bg-primary/10 rounded py-1 border border-primary/20 text-foreground">M1: 45%</div>
-            <div className="flex-1 text-center bg-primary/10 rounded py-1 border border-primary/20 text-foreground">M2: 45%</div>
-            <div className="flex-1 text-center bg-primary/10 rounded py-1 border border-primary/20 text-foreground">M3: 45%</div>
-            <div className="flex-1 text-center bg-primary/10 rounded py-1 border border-primary/20 text-foreground">M4: 45%</div>
-          </div>
-        </div>
-      </div>
-    )
+    title: "3D Dancer Motion Sync",
+    category: "3D & Web",
+    specs: "Three.js | MediaPipe Pose | 3D GLTF Character Sync",
+    description: "A high-performance web dashboard that extracts 3D skeleton joints from video footage using MediaPipe Tasks and maps them in real-time onto a 3D GLTF character model (dancer.glb) in a Three.js scene.",
+    tags: ["Three.js", "MediaPipe Tasks", "GLTF Animation", "WebGL", "TypeScript"],
+    images: [
+      "/projects/Skeleton Mocap 3D/Mocap.png",
+      "/projects/Skeleton Mocap 3D/auto-align.png"
+    ],
+    detailedSpecs: {
+      "3D Engine": "Three.js (WebGL)",
+      "Model Format": "GLTF / GLB Character Rig",
+      "Joint Solver": "Custom Euler / Quaternion keypoint mapping",
+      "Video Sync": "Interactive video frame-by-frame alignment"
+    },
+    features: [
+      "Developed custom keypoint mapping to translate 2D/3D landmarks to bone angles.",
+      "Integrates MediaPipe Pose estimation directly inside the web browser.",
+      "Provides auto-alignment controls to calibrate scale and offsets between characters.",
+      "Smooth character rendering using standard WebGL shaders."
+    ]
+  },
+  {
+    title: "Garment Piece Counter",
+    category: "AI & Computer Vision",
+    specs: "Real-time YOLO | Count Validation | MAS Holdings POC",
+    description: "A real-time computer vision and machine learning system designed to automate garment piece counting and quality control, developed in partnership with MAS Holdings as a high-accuracy inventory tracking solution.",
+    tags: ["YOLO", "OpenCV", "Python", "Machine Learning", "Industrial Automation"],
+    images: [
+      "/projects/Garment Piece Counter/GPC-Screenshot.png"
+    ],
+    detailedSpecs: {
+      "Partner": "MAS Holdings (Industrial Pilot)",
+      "Core Models": "YOLO Object Detection & custom CNN classifier",
+      "Functions": "Counting, defect check, color sorting",
+      "Lighting": "Illumination-invariant classification layers"
+    },
+    features: [
+      "Automates counting of stacked and folded fabric panels in real-time.",
+      "Reduces manual audit times by over 80% on the factory floor.",
+      "Deploys custom post-processing to ignore overlapping tags/labels.",
+      "Includes a dashboard to flag counts deviating from batch orders."
+    ]
+  },
+  {
+    title: "Shadow Projection Cylinder",
+    category: "Design & Prototyping",
+    specs: "Inverse Ray-Tracing | STL Template Export | Light Simulation",
+    description: "A complete Python tool that takes a silhouette image and generates a laser-cuttable cylinder template. When the cylinder is placed over a point light, the shadow it casts onto a floor surface reproduces the original image.",
+    tags: ["Python", "3D Geometry", "STL Export", "Image Binarization", "Ray Tracing Simulation"],
+    images: [
+      "/projects/Shadow Projection/output/phase6_3d_preview.png",
+      "/projects/Shadow Projection/output/phase4_simulation.png",
+      "/projects/Shadow Projection/output/phase1_binarization.png",
+      "/projects/Shadow Projection/output/phase2_cross_section.png",
+      "/projects/Shadow Projection/output/phase3_distortion.png",
+      "/projects/Shadow Projection/output/phase5_template.png",
+      "/projects/Shadow Projection/output/phase7_stl_export.png"
+    ],
+    detailedSpecs: {
+      "Projection Type": "Inverse Radial Light Ray Projection",
+      "Template Format": "DXF / SVG Flat Sheet & 3D STL Cylinder",
+      "Binarization": "Otsu's Adaptive Image Thresholding",
+      "Light Ray Engine": "Custom Vector-based Ray Casting Simulator"
+    },
+    features: [
+      "Calculates nonlinear distortion corrections for point light expansion.",
+      "Generates flat patterns ready for paper folding or laser engraving.",
+      "Generates 3D STL mesh with correct hollow thickness for 3D printing.",
+      "Simulates the projected shadow intensity before fabrication."
+    ]
+  },
+  {
+    title: "QR2Wallet",
+    category: "Mobile & iOS",
+    specs: "100% Serverless | On-Device OpenSSL PKCS#7 | Apple Wallet",
+    description: "A standalone, offline-capable iOS application designed to scan any QR code or barcode (such as movie tickets, event passes, national fuel cards) and compile and sign them into official Apple Wallet passes (.pkpass) directly on your device.",
+    tags: ["Swift", "iOS SDK", "Cryptography", "OpenSSL", "Apple Wallet Passes"],
+    images: [
+      "/projects/QR2Wallet/Screenshots/dashboard_grid_styled.png",
+      "/projects/QR2Wallet/Screenshots/pass_detail_styled.png",
+      "/projects/QR2Wallet/Screenshots/create_pass.png",
+      "/projects/QR2Wallet/Screenshots/pass_theme.png",
+      "/projects/QR2Wallet/Screenshots/pass_customization.png",
+      "/projects/QR2Wallet/Screenshots/dashboard_empty_dark.png"
+    ],
+    detailedSpecs: {
+      "Privacy Model": "100% Standalone & Offline signing",
+      "Signing Engine": "Embedded OpenSSL for iOS (C-layer)",
+      "Signature Type": "PKCS#7 cryptographic signing",
+      "Pass Format": "Standard Apple pkpass bundle (JSON + Signatures)"
+    },
+    features: [
+      "Bypasses standard cloud signing requirements, ensuring complete privacy.",
+      "Dynamically styles passes with user-selected colors, labels, and icons.",
+      "Performs real-time barcode translation (PDF417, Aztec, QR, Code 128).",
+      "Integrates fully with Apple's standard Add to Wallet prompt."
+    ]
   }
 ];
 
@@ -439,10 +481,9 @@ export default function Home() {
   const [typingSpeed, setTypingSpeed] = useState(120);
   const [activeTab, setActiveTab] = useState<"all" | "code" | "design" | "deliver">("all");
 
-  // Sticky Scroll Projects state
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [projectFilter, setProjectFilter] = useState<string>("All");
+  const [selectedProject, setSelectedProject] = useState<typeof PROJECTS[0] | null>(null);
+  const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
 
   // Typewriter effect logic
   useEffect(() => {
@@ -472,26 +513,28 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, roleIndex, typingSpeed]);
 
-  // Sticky scroll listener
+  // Close modal on Escape key press
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const totalHeight = rect.height - window.innerHeight;
-      const scrolled = -rect.top;
-
-      if (scrolled >= 0 && totalHeight > 0) {
-        const progress = Math.max(0, Math.min(1, scrolled / totalHeight));
-        setScrollProgress(progress);
-        const index = Math.min(PROJECTS.length - 1, Math.floor(progress * PROJECTS.length));
-        setActiveIndex(index);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedProject(null);
       }
     };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  // Prevent scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
 
   const filteredPrinciples = PRINCIPLES.filter(
     (p) => activeTab === "all" || p.category === activeTab
@@ -660,151 +703,277 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Projects Section (Sticky Scroll - Desktop & Card Stack - Mobile) */}
-      <section ref={sectionRef} className="relative border-t border-border bg-[#0a0a0a]">
-        
-        {/* Mobile View: Standard Card Stack (Hidden on desktop) */}
-        <div className="lg:hidden container mx-auto px-6 py-24 max-w-6xl space-y-12">
-          <div>
-            <div className="flex items-center gap-2 text-primary mb-4">
-              <HomeIcons.Briefcase className="w-4 h-4" />
-              <h2 className="text-xs uppercase tracking-widest font-bold">Featured Projects</h2>
+      {/* Featured Projects Section (Redesigned with sleek category filtering grid and detailed drawer modal) */}
+      <section className="relative border-t border-border bg-[#0a0a0a]">
+        <div className="container mx-auto px-6 py-24 sm:py-32 max-w-6xl">
+          <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div>
+              <div className="flex items-center gap-2 text-primary mb-4">
+                <HomeIcons.Briefcase className="w-4 h-4 text-primary" />
+                <h2 className="text-xs uppercase tracking-widest font-bold">Featured Projects</h2>
+              </div>
+              <p className="text-2xl sm:text-3xl font-serif text-foreground font-medium tracking-tight">Featured Work</p>
             </div>
-            <p className="text-2xl sm:text-3xl font-serif text-foreground">Featured Work</p>
+
+            {/* Category Filters */}
+            <div className="flex flex-wrap gap-2">
+              {["All", "Hardware & IoT", "AI & Computer Vision", "3D & Web", "Mobile & iOS"].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setProjectFilter(cat)}
+                  className={`px-4 py-2 text-xs font-semibold rounded-full border transition-all duration-300 cursor-pointer ${
+                    projectFilter === cat
+                      ? "bg-primary text-primary-foreground border-primary font-bold shadow-md shadow-primary/10"
+                      : "bg-[#131313]/50 text-muted-foreground border-border hover:text-foreground hover:border-muted-foreground/30"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
-          
-          <div className="space-y-10">
-            {PROJECTS.map((proj, idx) => (
-              <div key={idx} className="bg-card border border-border rounded-2xl overflow-hidden p-6 flex flex-col space-y-6">
-                <div className="space-y-3">
-                  <span className="text-xs font-bold text-primary uppercase tracking-widest font-mono">{proj.category}</span>
-                  <h3 className="text-xl font-bold text-foreground">{proj.title}</h3>
-                  <p className="text-xs font-mono text-[#a7a5a5]">{proj.specs}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{proj.description}</p>
+
+          {/* Grid of Projects */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {PROJECTS.filter(p => projectFilter === "All" || p.category === projectFilter).map((proj, idx) => (
+              <div
+                key={idx}
+                onClick={() => {
+                  setSelectedProject(proj);
+                  setActiveImageIndex(0);
+                }}
+                className="group relative rounded-2xl bg-[#131313]/60 border border-border/80 overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-500 hover:translate-y-[-6px] hover:border-primary/20"
+              >
+                {/* Background glow on hover */}
+                <div className="absolute -inset-px bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                {/* Image container */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
+                  <Image
+                    src={proj.images[0]}
+                    alt={proj.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-[1.05] transition-transform duration-700 ease-out brightness-[0.85] group-hover:brightness-[0.95]"
+                  />
+                  {/* Spec overlay */}
+                  <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-md border border-border px-2.5 py-1 rounded-md text-[9px] font-mono text-primary font-bold uppercase tracking-wider">
+                    {proj.category}
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {proj.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="px-2.5 py-1 bg-muted rounded text-[10px] font-semibold text-muted-foreground uppercase">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="border border-border/40 rounded-xl bg-black/40 overflow-hidden min-h-[220px] flex items-center justify-center">
-                  {proj.visual}
+
+                {/* Content */}
+                <div className="p-6 space-y-4">
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                      {proj.title}
+                    </h3>
+                    <p className="text-[10px] font-mono text-muted-foreground/80 font-semibold uppercase tracking-wider line-clamp-1 border-l border-primary/40 pl-2">
+                      {proj.specs.split("|")[0]}
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                      {proj.description}
+                    </p>
+                  </div>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {proj.tags.slice(0, 3).map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2 py-0.5 bg-muted/85 border border-border/50 rounded text-[9px] font-semibold text-muted-foreground uppercase"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                    {proj.tags.length > 3 && (
+                      <span className="px-2 py-0.5 bg-muted/85 border border-border/50 rounded text-[9px] font-semibold text-muted-foreground uppercase">
+                        +{proj.tags.length - 3}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Explore Trigger Button */}
+                  <div className="flex items-center gap-1.5 text-xs text-primary font-bold tracking-wider uppercase pt-4 border-t border-border/40 group-hover:text-foreground transition-colors duration-300">
+                    Explore Project
+                    <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Desktop View: Premium Immersive Sticky Scroll Showcase */}
-        <div className="hidden lg:block h-[400vh] relative">
-          <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
-            
-            <div className="container mx-auto px-6 max-w-6xl w-full">
-              <div className="grid grid-cols-12 gap-16 items-center h-[70vh]">
+        {/* Project Details Modal */}
+        {selectedProject && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-fade-in">
+            {/* Backdrop Click */}
+            <div className="absolute inset-0 cursor-pointer" onClick={() => setSelectedProject(null)} />
+
+            {/* Modal Card */}
+            <div className="relative w-full max-w-4xl max-h-[90vh] md:max-h-[85vh] bg-[#111111] border border-border rounded-2xl overflow-y-auto shadow-2xl flex flex-col z-10 animate-scale-up">
+              
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/60 hover:bg-primary/20 border border-border text-foreground hover:text-primary transition-all cursor-pointer"
+                aria-label="Close modal"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              <div className="grid md:grid-cols-12 gap-0 flex-1">
                 
-                {/* Left Side Details Column */}
-                <div className="col-span-6 relative h-full flex flex-col justify-center">
-                  <div className="absolute top-0 left-0">
-                    <div className="flex items-center gap-2 text-primary mb-3">
-                      <HomeIcons.Briefcase className="w-4 h-4" />
-                      <h2 className="text-xs uppercase tracking-widest font-bold">Featured Projects</h2>
-                    </div>
-                    <p className="text-3xl font-serif text-foreground">Featured Work</p>
+                {/* Left Column: Image Gallery & Carousel */}
+                <div className="md:col-span-7 bg-black/30 flex flex-col justify-between p-6 border-b md:border-b-0 md:border-r border-border min-h-[300px] md:min-h-0">
+                  
+                  {/* Main Image View */}
+                  <div className="relative flex-1 w-full aspect-[16/10] rounded-xl overflow-hidden border border-border bg-black/40">
+                    <Image
+                      src={selectedProject.images[activeImageIndex]}
+                      alt={`${selectedProject.title} screenshot ${activeImageIndex + 1}`}
+                      fill
+                      className="object-contain"
+                      priority
+                    />
+                    
+                    {/* Carousel Navigation Arrows */}
+                    {selectedProject.images.length > 1 && (
+                      <>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveImageIndex(prev => (prev === 0 ? selectedProject.images.length - 1 : prev - 1));
+                          }}
+                          className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-primary/20 border border-border text-foreground hover:text-primary transition-colors cursor-pointer"
+                          aria-label="Previous image"
+                        >
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveImageIndex(prev => (prev === selectedProject.images.length - 1 ? 0 : prev + 1));
+                          }}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-primary/20 border border-border text-foreground hover:text-primary transition-colors cursor-pointer"
+                          aria-label="Next image"
+                        >
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </button>
+                      </>
+                    )}
                   </div>
 
-                  <div className="relative w-full h-[40vh] mt-10">
-                    {PROJECTS.map((proj, idx) => {
-                      const isActive = activeIndex === idx;
-                      return (
-                        <div
-                          key={idx}
-                          className={`absolute inset-0 flex flex-col justify-center space-y-4 transition-all duration-700 ease-in-out ${
-                            isActive 
-                              ? "opacity-100 translate-y-0 pointer-events-auto" 
-                              : "opacity-0 translate-y-12 pointer-events-none"
+                  {/* Thumbnail Indicators */}
+                  {selectedProject.images.length > 1 && (
+                    <div className="flex flex-wrap gap-2 mt-4 justify-center">
+                      {selectedProject.images.map((img, iIdx) => (
+                        <button
+                          key={iIdx}
+                          onClick={() => setActiveImageIndex(iIdx)}
+                          className={`relative w-14 aspect-[16/10] rounded overflow-hidden border transition-all cursor-pointer ${
+                            activeImageIndex === iIdx ? "border-primary scale-105" : "border-border opacity-60 hover:opacity-100"
                           }`}
                         >
-                          <span className="text-xs font-bold text-primary uppercase tracking-widest font-mono">
-                            {proj.category}
-                          </span>
-                          <h3 className="text-3xl font-bold text-foreground">
-                            {proj.title}
-                          </h3>
-                          <span className="text-xs font-mono text-[#a7a5a5] leading-normal block">
-                            {proj.specs}
-                          </span>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
-                            {proj.description}
-                          </p>
-                          <div className="flex flex-wrap gap-2 pt-2">
-                            {proj.tags.map((tag, tIdx) => (
-                              <span key={tIdx} className="px-2.5 py-1 bg-muted rounded text-[10px] font-semibold text-muted-foreground uppercase">
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+                          <Image
+                            src={img}
+                            alt="Thumbnail"
+                            fill
+                            sizes="80px"
+                            className="object-cover"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
-                {/* Middle Progress Meter Column */}
-                <div className="col-span-1 flex flex-col justify-center items-center h-full pt-16">
-                  <div className="flex flex-col gap-5 font-mono text-xs items-center justify-center h-full">
-                    {PROJECTS.map((_, idx) => {
-                      const isActive = activeIndex === idx;
-                      return (
-                        <div key={idx} className="flex flex-col items-center gap-2.5">
-                          <span className={`transition-colors duration-300 text-[10px] font-bold ${isActive ? "text-primary" : "text-muted-foreground"}`}>
-                            0{idx + 1}
-                          </span>
-                          <div className="w-[1.5px] h-10 bg-border/60 relative overflow-hidden">
-                            <div 
-                              className="w-full bg-primary absolute left-0 top-0 transition-all duration-300"
-                              style={{ 
-                                height: isActive 
-                                  ? `${Math.max(0, Math.min(100, (scrollProgress * PROJECTS.length - idx) * 100))}%` 
-                                  : activeIndex > idx 
-                                    ? "100%" 
-                                    : "0%" 
-                              }}
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+                {/* Right Column: Details & Technical Notes */}
+                <div className="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto space-y-6">
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <span className="text-[10px] font-mono text-primary font-bold uppercase tracking-widest block mb-1">
+                        {selectedProject.category}
+                      </span>
+                      <h3 className="text-2xl font-bold font-serif text-foreground leading-tight">
+                        {selectedProject.title}
+                      </h3>
+                    </div>
 
-                {/* Right Side Visual Showcase Column */}
-                <div className="col-span-5 relative h-full bg-[#131313]/30 border border-border rounded-2xl overflow-hidden shadow-2xl">
-                  <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.01),transparent)] pointer-events-none"></div>
-                  {PROJECTS.map((proj, idx) => {
-                    const isActive = activeIndex === idx;
-                    return (
-                      <div
-                        key={idx}
-                        className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out ${
-                          isActive 
-                            ? "opacity-100 scale-100 rotate-0" 
-                            : "opacity-0 scale-95 rotate-1"
-                        }`}
-                      >
-                        {proj.visual}
+                    <p className="text-xs font-mono text-muted-foreground/80 leading-normal border-l border-primary/40 pl-3">
+                      {selectedProject.specs}
+                    </p>
+
+                    <div className="space-y-2">
+                      <h4 className="text-xs uppercase font-bold tracking-widest text-foreground">Project Overview</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {selectedProject.description}
+                      </p>
+                    </div>
+
+                    {/* Key Features */}
+                    {selectedProject.features && (
+                      <div className="space-y-2">
+                        <h4 className="text-xs uppercase font-bold tracking-widest text-foreground">Key Highlights</h4>
+                        <ul className="list-none space-y-2">
+                          {selectedProject.features.map((feat, fIdx) => (
+                            <li key={fIdx} className="text-xs text-muted-foreground flex items-start gap-2">
+                              <span className="text-primary select-none mt-0.5">▪</span>
+                              <span>{feat}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                    );
-                  })}
+                    )}
+
+                    {/* Detailed Tech Specifications */}
+                    <div className="space-y-2 pt-2">
+                      <h4 className="text-xs uppercase font-bold tracking-widest text-foreground">Technical Specifications</h4>
+                      <div className="border border-border/80 rounded-xl overflow-hidden text-xs bg-black/20">
+                        {Object.entries(selectedProject.detailedSpecs).map(([key, val], sIdx) => (
+                          <div
+                            key={sIdx}
+                            className={`grid grid-cols-12 p-2.5 ${
+                              sIdx % 2 === 0 ? "bg-[#131313]/30" : "bg-transparent"
+                            } ${sIdx !== 0 ? "border-t border-border/40" : ""}`}
+                          >
+                            <span className="col-span-5 font-mono text-[10px] uppercase text-muted-foreground">{key}</span>
+                            <span className="col-span-7 text-foreground font-medium">{val}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Tech Tags */}
+                  <div className="space-y-3 pt-4 border-t border-border/40">
+                    <div className="flex flex-wrap gap-1.5">
+                      {selectedProject.tags.map((tag, tIdx) => (
+                        <span
+                          key={tIdx}
+                          className="px-2.5 py-1 bg-muted border border-border/40 rounded text-[9px] font-semibold text-muted-foreground uppercase"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
                 </div>
 
               </div>
             </div>
-
           </div>
-        </div>
-
+        )}
       </section>
 
       {/* Principles Section */}
