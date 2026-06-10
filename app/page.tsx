@@ -277,25 +277,23 @@ const PRINCIPLES = [
 
 const TESTIMONIALS = [
   {
-    quote: "Pasindu's engineering on the Falcon Tracker was outstanding. He packed Nordic low-power RTOS and RF logic onto a sub-15g footprint while achieving an incredible 70km ground transmission range.",
-    author: "Lead Robotics Architect, SRQ Robotics LLC"
+    quote: "[Quote]",
+    author: "[Name], [Company Name]"
   },
   {
-    quote: "His biomechanical model prototyping and computer vision pipeline formed the core of our dance alignment tracking system, scaling movement coordinates accurately for thousands of active users.",
-    author: "Technology Director, DanceBetter AI SaaS"
+    quote: "[Quote]",
+    author: "[Name], [Company Name]"
   },
   {
-    quote: "The Madgwick stabilization filters and EKF altitude estimators Pasindu optimized directly on the ESP32 flight controller made our STEM programmable drone platform SLASSCOM national winners.",
-    author: "UAV Project Director, QubeBots STEM Drones"
+    quote: "[Quote]",
+    author: "[Name], [Company Name]"
   }
 ];
 
 const AWARDS = [
-  { name: "SLASSCOM National Winner 2024" },
-  { name: "APICTA Merit Award 2023" },
-  { name: "NICTA Gold Medal 2023" },
   { name: "ICIET Best Presentation 2021" },
-  { name: "IICE Safety IoT Finalist 2020" }
+  { name: "Finalist (Top 34 / 300+)" },
+  { name: "Dean's List (3rd & 4th Semesters)" }
 ];
 
 export default function Home() {
@@ -347,7 +345,7 @@ export default function Home() {
 
   return (
     <div className="flex-1 flex flex-col font-sans">
-      
+
       {/* Hero Section */}
       <section className="min-h-dvh flex items-center relative overflow-hidden select-none">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-xs opacity-5" style={{ backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_PATH || ""}/hero-bg.jpg')` }} />
@@ -355,7 +353,7 @@ export default function Home() {
 
         <div className="container mx-auto px-6 relative z-10 w-full -mt-12 sm:mt-0 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             <div className="lg:col-span-7 flex flex-col items-start text-left">
               <p className="animate-fade-in-up text-lg md:text-xl text-primary font-medium mb-4">
                 Hi, Pasindu here! 👋
@@ -370,19 +368,19 @@ export default function Home() {
               </h1>
 
               <p className="animate-fade-in-up delay-100 text-base sm:text-lg text-muted-foreground leading-relaxed mb-12 max-w-2xl">
-                I translate mathematical modeling (Kalman filters, cascaded loops) and low-power RTOS boundaries directly into highly compact, production-ready physical hardware. 
+                I translate mathematical modeling (Kalman filters, cascaded loops) and low-power RTOS boundaries directly into highly compact, production-ready physical hardware.
               </p>
 
               <div className="animate-fade-in-up delay-200 flex flex-wrap gap-4 w-full sm:w-auto">
-                <Link 
-                  href="/resume" 
+                <Link
+                  href="/resume"
                   className="btn-shimmer inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-primary text-primary-foreground font-bold text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] cursor-pointer"
                 >
                   <Icons.FileText className="w-4 h-4 text-primary-foreground" />
                   Résumé
                 </Link>
-                <Link 
-                  href="/contact" 
+                <Link
+                  href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg border-2 border-border hover:border-primary hover:text-primary font-bold text-sm tracking-wider uppercase transition-all duration-300 active:scale-[0.98] bg-background cursor-pointer"
                 >
                   <Icons.MessageSquare className="w-4 h-4" />
@@ -391,9 +389,9 @@ export default function Home() {
               </div>
 
               {/* Mobile scroll indicator */}
-              <button 
+              <button
                 onClick={() => window.scrollTo({ top: window.innerHeight - 80, behavior: "smooth" })}
-                className="animate-fade-in-up delay-300 mt-12 sm:hidden flex justify-center w-full text-muted-foreground/40 hover:text-primary transition-colors cursor-pointer" 
+                className="animate-fade-in-up delay-300 mt-12 sm:hidden flex justify-center w-full text-muted-foreground/40 hover:text-primary transition-colors cursor-pointer"
                 aria-label="Scroll down"
               >
                 <HomeIcons.ChevronsDown className="w-6 h-6 animate-bounce" />
@@ -409,12 +407,12 @@ export default function Home() {
                 <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 via-transparent to-primary/10 rounded-full blur-md group-hover:from-primary/35 group-hover:to-primary/20 transition-all duration-500"></div>
                 <div className="absolute -top-2 -right-2 w-3 h-3 rounded-full bg-primary/30 animate-pulse-slow"></div>
                 <div className="absolute -bottom-1 -left-1 w-2 h-2 rounded-full bg-primary/25 animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
-                
+
                 <div className="relative rounded-full w-full h-full ring-4 ring-[#131313] overflow-hidden shadow-2xl bg-[#131313]/60">
-                  <Image 
-                    alt="Pasindu Vihangana Schematic Portrait" 
-                    fill 
-                    className="relative object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-500" 
+                  <Image
+                    alt="Pasindu Vihangana Schematic Portrait"
+                    fill
+                    className="relative object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-500"
                     src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/assets/hero_mechatronics.png`}
                     priority
                   />
@@ -483,19 +481,19 @@ export default function Home() {
                   {category.icon}
                   {category.title}
                 </h3>
-                
+
                 <div className="grid grid-cols-4 gap-6">
                   {category.skills.map((skill, sIdx) => (
                     <div key={sIdx} className="flex flex-col items-center gap-2 group hover:translate-y-[-2px] transition-transform duration-300">
                       <div className="w-10 h-10 rounded-lg bg-muted/40 border border-border flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/30 transition-colors text-xs font-bold font-mono">
-                        {skill.name.substring(0,2).toUpperCase()}
+                        {skill.name.substring(0, 2).toUpperCase()}
                       </div>
                       <span className="text-[9px] text-muted-foreground group-hover:text-foreground text-center uppercase tracking-wider font-semibold line-clamp-2 h-7 flex items-center justify-center px-0.5">
                         {skill.name}
                       </span>
                       <div className="w-full h-[1.5px] bg-border/50 rounded-full overflow-hidden">
-                        <div 
-                          className="h-full rounded-full bg-primary" 
+                        <div
+                          className="h-full rounded-full bg-primary"
                           style={{ width: skill.rate }}
                         />
                       </div>
@@ -517,7 +515,7 @@ export default function Home() {
                 Featured Credentials
               </span>
             </div>
-            
+
             <div className="grid sm:grid-cols-2 gap-8 max-w-4xl">
               {CERTIFICATIONS.filter(c => c.featured).map((cert, idx) => (
                 <div key={idx} className="h-full">
@@ -548,11 +546,10 @@ export default function Home() {
                 <button
                   key={cat}
                   onClick={() => setProjectFilter(cat)}
-                  className={`px-4 py-2 text-xs font-semibold rounded-full border transition-all duration-300 cursor-pointer ${
-                    projectFilter === cat
-                      ? "bg-primary text-primary-foreground border-primary font-bold shadow-md shadow-primary/10"
-                      : "bg-[#131313]/50 text-muted-foreground border-border hover:text-foreground hover:border-muted-foreground/30"
-                  }`}
+                  className={`px-4 py-2 text-xs font-semibold rounded-full border transition-all duration-300 cursor-pointer ${projectFilter === cat
+                    ? "bg-primary text-primary-foreground border-primary font-bold shadow-md shadow-primary/10"
+                    : "bg-[#131313]/50 text-muted-foreground border-border hover:text-foreground hover:border-muted-foreground/30"
+                    }`}
                 >
                   {cat}
                 </button>
@@ -597,38 +594,34 @@ export default function Home() {
 
           {/* Filtering Tabs */}
           <div className="flex flex-wrap gap-2.5 mb-12">
-            <button 
+            <button
               onClick={() => setActiveTab("all")}
-              className={`flex items-center gap-2 px-4.5 py-2 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
-                activeTab === "all" ? "bg-primary text-primary-foreground font-bold" : "bg-muted text-muted-foreground hover:text-foreground border border-border"
-              }`}
+              className={`flex items-center gap-2 px-4.5 py-2 text-xs font-semibold rounded-full transition-colors cursor-pointer ${activeTab === "all" ? "bg-primary text-primary-foreground font-bold" : "bg-muted text-muted-foreground hover:text-foreground border border-border"
+                }`}
             >
               <HomeIcons.Layers className="w-3.5 h-3.5" />
               All
             </button>
-            <button 
+            <button
               onClick={() => setActiveTab("code")}
-              className={`flex items-center gap-2 px-4.5 py-2 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
-                activeTab === "code" ? "bg-primary text-primary-foreground font-bold" : "bg-muted text-muted-foreground hover:text-foreground border border-border"
-              }`}
+              className={`flex items-center gap-2 px-4.5 py-2 text-xs font-semibold rounded-full transition-colors cursor-pointer ${activeTab === "code" ? "bg-primary text-primary-foreground font-bold" : "bg-muted text-muted-foreground hover:text-foreground border border-border"
+                }`}
             >
               <HomeIcons.Code className="w-3.5 h-3.5" />
               How I Code / Model
             </button>
-            <button 
+            <button
               onClick={() => setActiveTab("design")}
-              className={`flex items-center gap-2 px-4.5 py-2 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
-                activeTab === "design" ? "bg-primary text-primary-foreground font-bold" : "bg-muted text-muted-foreground hover:text-foreground border border-border"
-              }`}
+              className={`flex items-center gap-2 px-4.5 py-2 text-xs font-semibold rounded-full transition-colors cursor-pointer ${activeTab === "design" ? "bg-primary text-primary-foreground font-bold" : "bg-muted text-muted-foreground hover:text-foreground border border-border"
+                }`}
             >
               <HomeIcons.Wrench className="w-3.5 h-3.5" />
               How I Design / Build
             </button>
-            <button 
+            <button
               onClick={() => setActiveTab("deliver")}
-              className={`flex items-center gap-2 px-4.5 py-2 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
-                activeTab === "deliver" ? "bg-primary text-primary-foreground font-bold" : "bg-muted text-muted-foreground hover:text-foreground border border-border"
-              }`}
+              className={`flex items-center gap-2 px-4.5 py-2 text-xs font-semibold rounded-full transition-colors cursor-pointer ${activeTab === "deliver" ? "bg-primary text-primary-foreground font-bold" : "bg-muted text-muted-foreground hover:text-foreground border border-border"
+                }`}
             >
               <HomeIcons.Rocket className="w-3.5 h-3.5" />
               How I Deliver / Support
@@ -638,8 +631,8 @@ export default function Home() {
           {/* Filtered Principles Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPrinciples.map((p, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="p-6 rounded-xl bg-card border border-border hover:border-primary/20 transition-all duration-300 flex flex-col space-y-4 animate-fade-in-up"
               >
                 <div className="flex items-center gap-3">
@@ -663,7 +656,7 @@ export default function Home() {
       <section className="border-t border-border bg-[#0d0d0d]/40">
         <div className="container mx-auto px-6 py-24 sm:py-32 max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
-            
+
             <div className="space-y-6">
               <div className="flex items-center gap-2 text-primary">
                 <HomeIcons.User className="w-4 h-4 text-primary" />
@@ -683,8 +676,8 @@ export default function Home() {
               <p>
                 Outside of core mathematics and electronics, I train in martial arts (fighter by night) and write code with a focus on simplicity. I call myself a realistic perfectionist: I have a clear view of physical hardware limitations and deliver optimized, highly reliable systems that win awards and perform in the field.
               </p>
-              <a 
-                href="/resume" 
+              <a
+                href="/resume"
                 className="inline-flex items-center gap-1.5 text-foreground hover:text-primary transition-colors font-semibold hover-underline"
               >
                 View my background
@@ -697,7 +690,7 @@ export default function Home() {
       </section>
 
       {/* Reviews & Awards Section */}
-      <section className="border-t border-border bg-[#0a0a0a]">
+      <section className="border-t border-border bg-[#0a0a0a] hidden">
         <div className="container mx-auto px-6 py-24 sm:py-32 max-w-6xl">
           <div className="mb-16">
             <div className="flex items-center gap-2 text-primary mb-4">
@@ -714,8 +707,8 @@ export default function Home() {
           {/* Testimonial Cards */}
           <div className="grid sm:grid-cols-3 gap-8 mb-16">
             {TESTIMONIALS.map((t, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="p-6 rounded-2xl bg-card border border-border flex flex-col justify-between space-y-4 hover:border-primary/10 transition-colors"
               >
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed italic">
@@ -737,8 +730,8 @@ export default function Home() {
             </span>
             <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8">
               {AWARDS.map((aw, idx) => (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className="px-4 py-2 border border-border/60 rounded-full text-xs font-semibold text-muted-foreground bg-[#131313]/20 hover:text-primary hover:border-primary/20 transition-all cursor-default"
                 >
                   🏆 {aw.name}

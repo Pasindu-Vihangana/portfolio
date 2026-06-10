@@ -15,16 +15,6 @@ const AWARDS = [
     desc: "Presented research paper: 'Algorithmic approach to minimise text-based programming for microcontrollers using graphical netlist generation' in Electronics Category."
   },
   {
-    title: "National Winner",
-    context: "SLASSCOM 2024",
-    desc: "Recognised nationally for design leadership in STEM educational flight stability systems and QubeBots software SDK algorithms."
-  },
-  {
-    title: "Gold Medal & Merit",
-    context: "NICTA & APICTA 2023",
-    desc: "Won NICTA Gold 2023 and APICTA Merit 2023 in autonomous stability flight estimation algorithms developed for STEM drone platforms."
-  },
-  {
     title: "Finalist (Top 34 / 300+)",
     context: "IICE 2020",
     desc: "Developed IoT smart level safety alert system incorporating weight telemetry and automatic shut-off valves for LP Gas cylinders."
