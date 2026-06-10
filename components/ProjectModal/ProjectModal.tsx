@@ -92,7 +92,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             {/* Main Image View */}
             <div className={styles.mainImageContainer}>
               <Image
-                src={project.images[activeImageIndex]}
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${project.images[activeImageIndex]}`}
                 alt={`${project.title} screenshot ${activeImageIndex + 1}`}
                 fill
                 className={styles.mainImage}
@@ -136,7 +136,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     }`}
                   >
                     <Image
-                      src={img}
+                      src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${img}`}
                       alt="Thumbnail"
                       fill
                       sizes="80px"

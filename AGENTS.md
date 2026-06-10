@@ -1,6 +1,7 @@
 <!-- BEGIN:nextjs-agent-rules -->
 # Frontend Coding Standards (Next.js/React)
 
+-   always use `${process.env.NEXT_PUBLIC_BASE_PATH || ""}` for all image paths.
 -   Always use components and props.
 -   Always create new files for new components, don't edit existing ones unless necessary.
 -   Maintain a proper heirachy of components.

@@ -415,7 +415,7 @@ export default function Home() {
                     alt="Pasindu Vihangana Schematic Portrait" 
                     fill 
                     className="relative object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-500" 
-                    src="/assets/hero_mechatronics.png"
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/assets/hero_mechatronics.png`}
                     priority
                   />
                 </div>

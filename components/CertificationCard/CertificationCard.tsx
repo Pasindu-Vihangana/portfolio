@@ -135,7 +135,7 @@ export default function CertificationCard({ certification }: CertificationCardPr
         <div className={styles.badgeContainer}>
           {!imageError ? (
             <Image
-              src={certification.image}
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${certification.image}`}
               alt={certification.title}
               width={1080}
               height={1080}

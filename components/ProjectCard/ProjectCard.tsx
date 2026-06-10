@@ -28,7 +28,7 @@ export default function ProjectCard({
         {/* Image container */}
         <div className={styles.imageContainer}>
           <Image
-            src={project.images[0]}
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${project.images[0]}`}
             alt={project.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
