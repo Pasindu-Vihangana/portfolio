@@ -3,10 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Icons } from "./components/Icons";
-import { PROJECTS, Project } from "./data/projects";
-import ProjectCard from "./components/ProjectCard/ProjectCard";
-import ProjectModal from "./components/ProjectModal/ProjectModal";
+import { Icons } from "@/components/Icons";
+import { PROJECTS, Project } from "@/data/projects";
+import ProjectCard from "@/components/ProjectCard/ProjectCard";
+import ProjectModal from "@/components/ProjectModal/ProjectModal";
+import { CERTIFICATIONS } from "@/data/certifications";
+import CertificationCard from "@/components/CertificationCard/CertificationCard";
+
 
 // Local inline icons for page sections and cards
 const HomeIcons = {
@@ -502,6 +505,28 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          {/* Featured Certifications */}
+          <div className="mt-20 pt-16 border-t border-border/40">
+            <div className="flex items-center gap-2 text-primary mb-8 justify-center sm:justify-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-primary">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="M12 8v4l3 3" />
+              </svg>
+              <span className="text-xs uppercase tracking-widest font-bold font-mono">
+                Featured Credentials
+              </span>
+            </div>
+            
+            <div className="grid sm:grid-cols-2 gap-8 max-w-4xl">
+              {CERTIFICATIONS.filter(c => c.featured).map((cert, idx) => (
+                <div key={idx} className="h-full">
+                  <CertificationCard certification={cert} />
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </section>
 

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import FloatingBanner from "./components/FloatingBanner";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import FloatingBanner from "@/components/FloatingBanner";
 
 export const metadata: Metadata = {
   title: "Pasindu Vihangana | Robotics & Embedded Systems Engineer",

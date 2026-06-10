@@ -1,6 +1,7 @@
 import React from "react";
-import { Icons } from "../components/Icons";
+import { Icons } from "@/components/Icons";
 import { Metadata } from "next";
+import CertificationsShowcase from "@/components/CertificationsShowcase/CertificationsShowcase";
 
 export const metadata: Metadata = {
   title: "Résumé | Pasindu Vihangana",
@@ -261,6 +262,11 @@ export default function ResumePage() {
                   </div>
                 ))}
               </div>
+            </section>
+
+            {/* Certifications Section */}
+            <section className="border-t border-border/40 pt-10">
+              <CertificationsShowcase />
             </section>
 
             {/* Education and Accolades sections moved to the right column to prevent layout imbalances */}

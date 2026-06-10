@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Icons } from "../components/Icons";
+import { Icons } from "@/components/Icons";
 
 // Local Contact SVGs for a self-contained premium page
 const ContactIcons = {

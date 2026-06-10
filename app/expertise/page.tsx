@@ -1,6 +1,7 @@
 import React from "react";
-import { Icons } from "../components/Icons";
+import { Icons } from "@/components/Icons";
 import { Metadata } from "next";
+import CertificationsShowcase from "@/components/CertificationsShowcase/CertificationsShowcase";
 
 export const metadata: Metadata = {
   title: "Expertise | Pasindu Vihangana",
@@ -623,6 +624,11 @@ export default function ExpertisePage() {
                 ))}
               </div>
             </div>
+          </section>
+
+          {/* Certifications Section */}
+          <section className="scroll-mt-32 border-t border-border/40 pt-20">
+            <CertificationsShowcase />
           </section>
 
           {/* Professional Skills Section */}

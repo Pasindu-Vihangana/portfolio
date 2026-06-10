@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Icons } from "../components/Icons";
-import { PROJECTS, Project } from "../data/projects";
-import ProjectCard from "../components/ProjectCard/ProjectCard";
-import ProjectModal from "../components/ProjectModal/ProjectModal";
+import { Icons } from "@/components/Icons";
+import { PROJECTS, Project } from "@/data/projects";
+import ProjectCard from "@/components/ProjectCard/ProjectCard";
+import ProjectModal from "@/components/ProjectModal/ProjectModal";
 
 export default function ExperiencePage() {
   const [projectFilter, setProjectFilter] = useState<"all" | "hardware" | "ai" | "3d" | "mobile">("all");
