@@ -254,11 +254,6 @@ export default function ResumePage() {
               </div>
             </section>
 
-            {/* Certifications Section */}
-            <section className="border-t border-border/40 pt-10">
-              <CertificationsShowcase />
-            </section>
-
             {/* Education and Accolades sections moved to the right column to prevent layout imbalances */}
 
           </div>
