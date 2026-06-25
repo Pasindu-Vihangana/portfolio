@@ -28,8 +28,8 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 print:hidden">
       <nav className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         {/* Logo */}
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="text-xl font-serif text-foreground hover:text-primary transition-colors lg:w-[200px]"
         >
           <span className="font-bold tracking-tight">PASINDU</span>
@@ -41,11 +41,10 @@ export default function Header() {
             <li key={link.name}>
               <Link
                 href={link.href}
-                className={`transition-colors hover-underline py-1 ${
-                  isActive(link.href) 
-                    ? "text-primary font-bold" 
-                    : "hover:text-foreground text-muted-foreground"
-                }`}
+                className={`transition-colors hover-underline py-1 ${isActive(link.href)
+                  ? "text-primary font-bold"
+                  : "hover:text-foreground text-muted-foreground"
+                  }`}
               >
                 {link.name}
               </Link>
@@ -55,6 +54,9 @@ export default function Header() {
 
         {/* Action / Social / Mock controls */}
         <div className="hidden lg:flex items-center justify-end gap-2 lg:min-w-[200px]">
+
+          <div className="h-4 w-px bg-border mx-2"></div>
+
           <a
             href="https://www.linkedin.com/in/pasindu-vihangana/"
             target="_blank"
@@ -64,6 +66,8 @@ export default function Header() {
           >
             <Icons.Linkedin className="w-5 h-5" />
           </a>
+
+          <div className="h-4 w-px bg-border mx-2"></div>
 
           <a
             href="https://github.com/Pasindu-Vihangana"
@@ -78,7 +82,7 @@ export default function Header() {
             </span>
           </a>
 
-          <a
+          {/* <a
             href="https://buymeacoffee.com/pasindu.vihangana"
             target="_blank"
             rel="noopener noreferrer"
@@ -86,16 +90,17 @@ export default function Header() {
             title="Buy Me A Coffee"
           >
             <Icons.Cpu className="w-5 h-5" />
-          </a>
+          </a> */}
 
           <div className="h-4 w-px bg-border mx-2"></div>
-          <button className="text-xs font-semibold px-2.5 py-1 rounded bg-[#131313] border border-border text-foreground hover:border-primary transition-colors cursor-pointer">
-            EN
-          </button>
 
-          <button className="p-2 rounded hover:bg-[#131313] transition-colors cursor-pointer" aria-label="Toggle theme">
+          {/* <button className="text-xs font-semibold px-2.5 py-1 rounded bg-[#131313] border border-border text-foreground hover:border-primary transition-colors cursor-pointer">
+            EN
+          </button> */}
+
+          {/* <button className="p-2 rounded hover:bg-[#131313] transition-colors cursor-pointer" aria-label="Toggle theme">
             <Icons.Sun className="w-5 h-5 text-muted-foreground" />
-          </button>
+          </button> */}
         </div>
 
         {/* Mobile menu button */}
@@ -117,9 +122,8 @@ export default function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block py-2 ${
-                    isActive(link.href) ? "text-primary" : "text-muted-foreground hover:text-foreground"
-                  }`}
+                  className={`block py-2 ${isActive(link.href) ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                    }`}
                 >
                   {link.name}
                 </Link>
