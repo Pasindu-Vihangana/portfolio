@@ -139,7 +139,7 @@ export default function ContactPage() {
       <section className="pb-24 sm:pb-32">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
-            
+
             {/* Form Column (Left side) */}
             <div className="bg-card rounded-2xl border border-border p-6 sm:p-8">
               {formStatus === "success" ? (
@@ -236,7 +236,7 @@ export default function ContactPage() {
                         <input
                           id="contact-phone"
                           type="tel"
-                          placeholder="+94 76 3498 429"
+                          placeholder="(+94) 12 3456 789"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary transition-colors text-sm text-foreground"
@@ -255,11 +255,10 @@ export default function ContactPage() {
                             key={opt}
                             type="button"
                             onClick={() => setFormData({ ...formData, type: opt })}
-                            className={`flex-1 px-4 py-2.5 rounded-lg border text-xs font-semibold transition-colors cursor-pointer ${
-                              formData.type === opt
-                                ? "bg-primary border-primary text-primary-foreground font-bold"
-                                : "bg-background border-border hover:border-primary/50 text-foreground"
-                            }`}
+                            className={`flex-1 px-4 py-2.5 rounded-lg border text-xs font-semibold transition-colors cursor-pointer ${formData.type === opt
+                              ? "bg-primary border-primary text-primary-foreground font-bold"
+                              : "bg-background border-border hover:border-primary/50 text-foreground"
+                              }`}
                           >
                             {opt}
                           </button>
@@ -335,7 +334,7 @@ export default function ContactPage() {
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-0.5">Location</p>
                       <p className="text-foreground text-sm font-semibold">
-                        Colombo, Sri Lanka (remote-first)
+                        Colombo, Sri Lanka.
                       </p>
                     </div>
                   </div>
@@ -407,7 +406,7 @@ export default function ContactPage() {
 
           <div className="relative">
             <div className="grid sm:grid-cols-4 gap-12 sm:gap-6 lg:gap-8">
-              
+
               {/* Step 1 */}
               <div className="relative flex flex-col items-center text-center">
                 <div className="relative mb-5">
@@ -424,7 +423,7 @@ export default function ContactPage() {
                 <p className="text-xs text-muted-foreground leading-relaxed max-w-[180px]">
                   Submit the form, email, or send a message on WhatsApp. I respond within 24 hours.
                 </p>
-                
+
                 {/* Connecting Chevron Desktop */}
                 <div className="hidden sm:flex items-center justify-center absolute top-7 left-[calc(100%+12px)] -translate-x-1/2 z-10">
                   <ContactIcons.ChevronRight className="w-4 h-4 text-muted-foreground/30" />

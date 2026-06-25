@@ -103,7 +103,7 @@ const HomeIcons = {
 
 const ROLES = [
   "Robotics Engineer",
-  "Embedded Systems Specialist",
+  "Embedded Systems Developer",
   "Mechatronics Engineer",
   "Firmware Developer",
   "Sensor Fusion Specialist"
@@ -354,16 +354,16 @@ export default function Home() {
         <div className="container mx-auto px-6 relative z-10 w-full -mt-12 sm:mt-0 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-            <div className="lg:col-span-7 flex flex-col items-start text-left">
+            <div className="lg:col-span-8 flex flex-col items-start text-left">
               <p className="animate-fade-in-up text-lg md:text-xl text-primary font-medium mb-4">
                 Hi, Pasindu here! 👋
               </p>
 
-              <h1 className="animate-fade-in-up text-4xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-foreground leading-[1.1] mb-8">
+              <h1 className="animate-fade-in-up text-[5.5vw] sm:text-[4vw] lg:text-[2.5rem] xl:text-[2.75rem] font-serif tracking-tight text-foreground leading-[1.1] mb-8">
                 I am a<br />
-                <span className="font-mono text-primary inline-block min-h-[1.5em] mt-2 relative">
+                <span className="font-mono text-primary inline-block text-[5.5vw] sm:text-[4vw] lg:text-[2.5rem] xl:text-[2.75rem] whitespace-nowrap min-h-[1.2em] mt-2 relative">
                   {currentText}
-                  <span className="w-1.5 h-8 bg-primary absolute right-[-12px] bottom-[4px] animate-pulse"></span>
+                  <span className="inline-block w-1.5 h-[0.8em] bg-primary ml-1.5 align-baseline animate-pulse"></span>
                 </span>
               </h1>
 
@@ -399,7 +399,7 @@ export default function Home() {
             </div>
 
             {/* Circular Glowing Portrait Schematic Card */}
-            <div className="lg:col-span-5 hidden lg:flex justify-center items-center">
+            <div className="lg:col-span-4 hidden lg:flex justify-center items-center">
               <div className="relative w-64 xl:w-80 aspect-square group">
                 <div className="absolute -inset-4 rounded-full border border-primary/15 animate-pulse-slow"></div>
                 <div className="absolute -inset-2 rounded-full bg-[conic-gradient(from_0deg,transparent_0%,var(--color-primary)_25%,transparent_50%)] opacity-15 group-hover:opacity-30 animate-spin-slow transition-opacity duration-500"></div>
