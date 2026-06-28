@@ -9,6 +9,7 @@ import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import ProjectModal from "@/components/ProjectModal/ProjectModal";
 import { CERTIFICATIONS } from "@/data/certifications";
 import CertificationCard from "@/components/CertificationCard/CertificationCard";
+import { ParallaxBackground } from "@/components/ParallaxBackground";
 
 
 // Local inline icons for page sections and cards
@@ -345,9 +346,10 @@ export default function Home() {
 
   return (
     <div className="flex-1 flex flex-col font-sans">
+      <ParallaxBackground />
 
       {/* Hero Section */}
-      <section className="min-h-dvh flex items-center relative overflow-hidden select-none">
+      <section className="min-h-dvh flex items-center relative overflow-hidden select-none backdrop-blur-[2px]">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-xs opacity-5" style={{ backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_PATH || ""}/assets/hero_mechatronics.png')` }} />
         <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
 
@@ -425,7 +427,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="border-t border-border bg-[#0a0a0a]">
+      <section className="border-t border-border bg-[#0a0a0a]/70 backdrop-blur-[2px]">
         <div className="container mx-auto px-6 py-24 sm:py-32 max-w-6xl">
           <div className="mb-16 animate-fade-in-up">
             <div className="flex items-center gap-2 text-primary mb-4">
@@ -439,9 +441,9 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {SERVICES.map((srv, idx) => (
-              <div key={idx} className="space-y-3 group">
+              <div key={idx} className="p-6 rounded-xl bg-[#131313]/45 backdrop-blur-sm border border-border hover:border-primary/20 transition-all duration-300 space-y-3 group">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/15 group-hover:border-primary/25 transition-all duration-300">
                     {srv.icon}
@@ -460,7 +462,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="border-t border-border bg-[#0d0d0d]/40">
+      <section className="border-t border-border bg-[#0d0d0d]/40 backdrop-blur-[2px]">
         <div className="container mx-auto px-6 py-24 sm:py-32 max-w-6xl">
           <div className="mb-16">
             <div className="flex items-center gap-2 text-primary mb-4">
@@ -474,10 +476,10 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-x-12 gap-y-16">
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
             {SKILLS_CATEGORIES.map((category, idx) => (
-              <div key={idx} className="space-y-6">
-                <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground mb-4">
+              <div key={idx} className="p-6 rounded-xl bg-[#131313]/45 backdrop-blur-sm border border-border space-y-6">
+                <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground border-b border-border/40 pb-3">
                   {category.icon}
                   {category.title}
                 </h3>
@@ -529,7 +531,7 @@ export default function Home() {
       </section>
 
       {/* Featured Projects Section (Redesigned with sleek category filtering grid and detailed drawer modal) */}
-      <section className="relative border-t border-border bg-[#0a0a0a]">
+      <section className="relative border-t border-border bg-[#0a0a0a]/70 backdrop-blur-[2px]">
         <div className="container mx-auto px-6 py-24 sm:py-32 max-w-6xl">
           <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
@@ -578,7 +580,7 @@ export default function Home() {
       </section>
 
       {/* Principles Section */}
-      <section className="border-t border-border bg-[#0a0a0a]">
+      <section className="border-t border-border bg-[#0d0d0d]/40 backdrop-blur-[2px]">
         <div className="container mx-auto px-6 py-24 sm:py-32 max-w-6xl">
           <div className="mb-12">
             <div className="flex items-center gap-2 text-primary mb-4">
@@ -633,7 +635,7 @@ export default function Home() {
             {filteredPrinciples.map((p, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-xl bg-card border border-border hover:border-primary/20 transition-all duration-300 flex flex-col space-y-4 animate-fade-in-up"
+                className="p-6 rounded-xl bg-[#131313]/45 backdrop-blur-sm border border-border hover:border-primary/20 transition-all duration-300 flex flex-col space-y-4 animate-fade-in-up"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -653,7 +655,7 @@ export default function Home() {
       </section>
 
       {/* About Section (Split column style) */}
-      <section className="border-t border-border bg-[#0d0d0d]/40">
+      <section className="border-t border-border bg-[#0a0a0a]/70 backdrop-blur-[2px]">
         <div className="container mx-auto px-6 py-24 sm:py-32 max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
 
@@ -690,7 +692,7 @@ export default function Home() {
       </section>
 
       {/* Reviews & Awards Section */}
-      <section className="border-t border-border bg-[#0a0a0a] hidden">
+      <section className="border-t border-border bg-[#0a0a0a]/70 backdrop-blur-[2px] hidden">
         <div className="container mx-auto px-6 py-24 sm:py-32 max-w-6xl">
           <div className="mb-16">
             <div className="flex items-center gap-2 text-primary mb-4">
