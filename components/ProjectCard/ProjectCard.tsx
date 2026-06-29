@@ -2,23 +2,22 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Project } from "@/data/projects";
 import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {
   project: Project;
-  onClick: () => void;
   exploreLabel?: string;
 }
 
 export default function ProjectCard({
   project,
-  onClick,
   exploreLabel = "Explore Project",
 }: ProjectCardProps) {
   return (
-    <div
-      onClick={onClick}
+    <Link
+      href={`/projects/${project.id}`}
       className={styles.card}
     >
       {/* Background glow on hover */}
@@ -79,6 +78,6 @@ export default function ProjectCard({
           </svg>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

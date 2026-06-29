@@ -4,9 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "@/components/Icons";
-import { PROJECTS, Project } from "@/data/projects";
+import { PROJECTS } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
-import ProjectModal from "@/components/ProjectModal/ProjectModal";
+
 import { CERTIFICATIONS } from "@/data/certifications";
 import CertificationCard from "@/components/CertificationCard/CertificationCard";
 import { ParallaxBackground } from "@/components/ParallaxBackground";
@@ -305,7 +305,6 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<"all" | "code" | "design" | "deliver">("all");
 
   const [projectFilter, setProjectFilter] = useState<string>("All");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -530,8 +529,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Projects Section (Redesigned with sleek category filtering grid and detailed drawer modal) */}
-      <section className="relative border-t border-border bg-[#0a0a0a]/70 backdrop-blur-[2px]">
+      {/* Featured Projects Section */}
+      <section id="projects" className="relative border-t border-border bg-[#0a0a0a]/70 backdrop-blur-[2px]">
         <div className="container mx-auto px-6 py-24 sm:py-32 max-w-6xl">
           <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
@@ -565,18 +564,12 @@ export default function Home() {
               <ProjectCard
                 key={proj.id}
                 project={proj}
-                onClick={() => setSelectedProject(proj)}
                 exploreLabel="Explore Project"
               />
             ))}
           </div>
         </div>
 
-        {/* Project Details Modal */}
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
       </section>
 
       {/* Principles Section */}

@@ -1,3 +1,10 @@
+export interface ProjectSection {
+  type: "text" | "specs-table" | "highlights-grid" | "mermaid" | "math-block" | "steps-list" | "info-box";
+  title?: string;
+  content?: string;
+  items?: string[] | { label: string; value: string }[] | { title: string; text: string }[];
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -10,6 +17,7 @@ export interface Project {
   features: string[];
   tags: string[];
   link?: string;
+  sections: ProjectSection[];
 }
 
 export const PROJECTS: Project[] = [
@@ -44,7 +52,37 @@ export const PROJECTS: Project[] = [
       "O-ring sealed waterproof battery compartment with textured tightening cap.",
       "Ultra-lightweight (<15g) enclosure design optimized for avian payloads."
     ],
-    link: "https://github.com/Pasindu-Vihangana"
+    link: "https://github.com/Pasindu-Vihangana",
+    sections: [
+      {
+        type: "specs-table",
+        title: "RF Configuration & Performance Parameters",
+        items: [
+          { label: "RF Transceiver", value: "Semtech SX1268 (High-efficiency sub-GHz)" },
+          { label: "Tx Output Power", value: "27 dBm (enhanced via integrated Power Amplifier)" },
+          { label: "Rx Front-End Gain", value: "20 dBm (boosted via Low Noise Amplifier)" },
+          { label: "Bandwidth (BW)", value: "500 kHz (optimized for sensitivity vs rate)" },
+          { label: "Spreading Factor", value: "SF9 (balances packet airtime & link budget)" },
+          { label: "Whip Antenna (Tx)", value: "Thin omnidirectional metal rod (~20 cm)" },
+          { label: "Ground Antenna (Rx)", value: "High-gain whip antenna (~80 cm) with magnetic base" }
+        ]
+      },
+      {
+        type: "highlights-grid",
+        title: "Mechanical Enclosure & Assembly Specs",
+        items: [
+          { title: "Metric Threads", text: "ISO Metric battery cap threads featuring a 0.5 mm pitch, 3.2 mm depth, and a 120° internal relief angle." },
+          { title: "SMA Port Offset", text: "Enclosure body designed with a female SMA port offset of 0.5 mm and 3.8 mm depth matching 1/4\"-36UNS specs." },
+          { title: "Waterproof Integrity", text: "Integrated O-ring seal track with a textured cap edge allowing manual tightening to IP67 standards." },
+          { title: "Charger Integration", text: "Multi-charger PCB tracks 3 batteries with overcharge protection and status indicators." }
+        ]
+      },
+      {
+        type: "text",
+        title: "VNA Tuning Field Notes",
+        content: "To guarantee operational telemetry, Vector Network Analyzers (VNAs) were deployed to tune the antennas to exact resonance. Off-the-shelf whip antennas frequently degrade from nominal sub-GHz resonance when placed in proximity to metallic avionics, requiring customized matching circuits to achieve a receiver sensitivity floor of -120 dBm."
+      }
+    ]
   },
   {
     id: "fitness-tracker",
@@ -72,7 +110,40 @@ export const PROJECTS: Project[] = [
       "Optimized battery profile for low duty cycle power consumption.",
       "Designed compact 4-layer PCB layout verifying signal integrity."
     ],
-    link: "https://github.com/Pasindu-Vihangana"
+    link: "https://github.com/Pasindu-Vihangana",
+    sections: [
+      {
+        type: "specs-table",
+        title: "Hardware Architecture Details",
+        items: [
+          { label: "Core MCU", value: "Nordic nRF52840 (ARM Cortex-M4 @ 64MHz)" },
+          { label: "IMU Tracking", value: "6-DoF Motion Sensor (Tri-axial Accel + Gyro)" },
+          { label: "Altimeter", value: "Digital Barometric Pressure Sensor" },
+          { label: "Form Factor", value: "Ultra-compact 15 mm × 25 mm footprint" },
+          { label: "Power System", value: "LiPo charging via PMIC with low-dropout regulators" }
+        ]
+      },
+      {
+        type: "mermaid",
+        title: "Signal Processing & Communication Data Flow",
+        content: `graph TD
+  A[Raw IMU & Barometer Data] --> B[On-Device DSP & Sensor Fusion]
+  B --> C[Compressed Packets Generation]
+  C --> D[100Hz BLE Wireless Stream]
+  D --> E[Python Client Dashboard]
+  E --> F[Feature Extraction & Real-time Classification]`
+      },
+      {
+        type: "highlights-grid",
+        title: "Exercise Telemetry Indicators",
+        items: [
+          { title: "Displacement (m)", text: "Tracks cumulative spatial displacement of the repetition cycle using fused acceleration integration." },
+          { title: "Velocity Curves", text: "Extracts average and peak velocity of repetitions to evaluate kinetic power output." },
+          { title: "On-Device Filtering", text: "C++ implementation of digital Butterworth bandpass filters directly on the nRF52 ARM core." },
+          { title: "MATLAB Modeling", text: "Original filter coefficients and sensor fusion state-space matrices modeled in MATLAB before flashing hardware." }
+        ]
+      }
+    ]
   },
   {
     id: "dance-better",
@@ -101,7 +172,46 @@ export const PROJECTS: Project[] = [
       "Generates interactive performance curves highlighting timing discrepancies.",
       "Dashboard includes personalized scheduling and progress tracking telemetry."
     ],
-    link: "https://github.com/Pasindu-Vihangana"
+    link: "https://github.com/Pasindu-Vihangana",
+    sections: [
+      {
+        type: "highlights-grid",
+        title: "Platform Scale & Ingestion Capabilities",
+        items: [
+          { title: "1,000+ Active Users", text: "Experimental deployment supporting a global community of dancers." },
+          { title: "12,000+ Video Jobs", text: "Successfully processed and analyzed asynchronous video uploads." },
+          { title: "Signed URL Transfers", text: "Direct-to-cloud file uploads to Google Cloud Storage (GCS) to bypass server memory limits." },
+          { title: "Client FFmpeg Crop", text: "In-browser video trimming via WebAssembly FFmpeg for efficient bandwidth utilization." }
+        ]
+      },
+      {
+        type: "mermaid",
+        title: "Asynchronous Cloud Analysis Workflow",
+        content: `sequenceDiagram
+  Dancer->>NextJS: Request Upload URL
+  NextJS->>GCS: Generate Signed URL
+  Dancer->>GCS: Direct Video Binary Upload
+  Dancer->>NextJS: Trigger Video Analysis Job
+  NextJS->>Redis: Queue Job (Pending)
+  par Parallel Processing
+    NextJS->>YOLO Service: Process skeletal coordinates (10fps)
+    NextJS->>Gemini API: Qualitative multimodal posture analysis
+  end
+  YOLO Service-->>Database: Write joint landmark JSON
+  Gemini API-->>Database: Write text feedback JSON
+  NextJS->>Dancer: Display real-time progress dashboard`
+      },
+      {
+        type: "highlights-grid",
+        title: "Algorithmic Landmarks",
+        items: [
+          { title: "Left-to-Right Sorting", text: "Identifies multiple dancers in a frame and locks tracking IDs based on shoulder/hip centroids to prevent ID swap errors." },
+          { title: "Temporal Warp Alignment", text: "Aligns the cover video timeline to the coach video timeline based on joint coordinate velocity curves." },
+          { title: "Vertex AI Integration", text: "Harnesses Vertex AI models to review styling, arm curves, posture, and rhythm dynamics." },
+          { title: "Interactive Schedules", text: "Compiles workout routines directly targeting specific body movements with custom timestamp links." }
+        ]
+      }
+    ]
   },
   {
     id: "mocap-3d",
@@ -127,7 +237,29 @@ export const PROJECTS: Project[] = [
       "Provides auto-alignment controls to calibrate scale and offsets between characters.",
       "Smooth character rendering using standard WebGL shaders."
     ],
-    link: "https://github.com/Pasindu-Vihangana"
+    link: "https://github.com/Pasindu-Vihangana",
+    sections: [
+      {
+        type: "mermaid",
+        title: "Joint-to-Bone Processing Pipeline",
+        content: `graph LR
+  Input[Source Dance Video] --> MP[MediaPipe 3D Landmark Extractor]
+  MP --> Vector[Joint Coordinate Vectors]
+  Vector --> Solve[Inverse Kinematics / FK Rotation Solver]
+  Solve --> SkinnedMesh[Three.js SkinnedMesh Bone Matrix]
+  SkinnedMesh --> Render[Real-time WebGL Canvas Render]`
+      },
+      {
+        type: "highlights-grid",
+        title: "WebGL Rendering Features",
+        items: [
+          { title: "Forward Kinematics (FK)", text: "Translates absolute 3D Cartesian coordinates into parent-child joint rotation quaternions." },
+          { title: "Interactive Timeline", text: "Allows manual and automatic keyframe adjustment to calibrate coordinate sync anomalies." },
+          { title: "GLTF Bone Alignment", text: "Normalizes coordinate scale to align target rigs with varying default bone lengths." },
+          { title: "Performance Tuning", text: "Maintains 60 FPS in-browser WebGL rendering using optimized vector reuse." }
+        ]
+      }
+    ]
   },
   {
     id: "garment-counter",
@@ -152,7 +284,45 @@ export const PROJECTS: Project[] = [
       "Deploys custom post-processing to ignore overlapping tags/labels.",
       "Includes a dashboard to flag counts deviating from batch orders."
     ],
-    link: "https://github.com/Pasindu-Vihangana"
+    link: "https://github.com/Pasindu-Vihangana",
+    sections: [
+      {
+        type: "mermaid",
+        title: "Factory Conveyor Data Pipeline",
+        content: `graph TD
+  A[Conveyor Belt / Light Table] --> B[Industrial Camera Stream]
+  B --> C[Edge Detection & Contour Segmentation]
+  C --> D[Geometric Feature Vector Extraction]
+  D --> E[Logistic Regression Classifier]
+  E -->|Accept| F[Update Dashboard Counter]
+  E -->|Reject / Deformed| G[Trigger Alarm & Log Error]`
+      },
+      {
+        type: "math-block",
+        title: "Segmentation & Classification Logic",
+        content: `### 1. Shape Segmentation (Adaptive Thresholding)
+$$I_{bin}(x, y) = \\begin{cases} 255 & \\text{if } I(x, y) > T_{adaptive}(x, y) \\\\ 0 & \\text{otherwise} \\end{cases}$$
+
+### 2. Feature Vector Extraction
+$$\\mathbf{x} = [x_1, x_2]^T$$
+* $x_1$: Normalized Area to Perimeter ratio (Roundness / Eccentricity)
+* $x_2$: Aspect Ratio (width / height of bounding box)
+
+### 3. Logistic Regression Classifier Probability
+$$P(Y=1 | \\mathbf{x}) = \\sigma(\\mathbf{w}^T \\mathbf{x} + b) = \\frac{1}{1 + e^{-(\\mathbf{w}^T \\mathbf{x} + b)}}$$
+* If $P(Y=1 | \\mathbf{x}) \\ge 0.5 \\implies$ **Accept** (Correct cut piece)
+* If $P(Y=1 | \\mathbf{x}) < 0.5 \\implies$ **Reject** (Deformed or incorrect cutout)`
+      },
+      {
+        type: "info-box",
+        title: "Industrial Tuning Recommendations",
+        items: [
+          { title: "High-Contrast Backlighting", text: "Using a light table background eliminates shadows, stabilizing the contour algorithm against factory floor lighting shifts." },
+          { title: "GPU Acceleration", text: "For fast-moving conveyors (>2 m/s), porting pre-processing to C++ with CUDA drops classification latency below 5ms." },
+          { title: "HSV Features", text: "Appending color histograms to the feature vector allows simultaneous garment color sorting." }
+        ]
+      }
+    ]
   },
   {
     id: "shadow-projection",
@@ -183,7 +353,32 @@ export const PROJECTS: Project[] = [
       "Generates 3D STL mesh with correct hollow thickness for 3D printing.",
       "Simulates the projected shadow intensity before fabrication."
     ],
-    link: "https://github.com/Pasindu-Vihangana"
+    link: "https://github.com/Pasindu-Vihangana",
+    sections: [
+      {
+        type: "specs-table",
+        title: "Physics & Ray Tracing Parameters",
+        items: [
+          { label: "Binarization", value: "Otsu's Adaptive Image Thresholding" },
+          { label: "Light Model", value: "Point Light Source Radial Propagation" },
+          { label: "Magnification Range", value: "M = 1.0 (base floor) to M → ∞ (adjacent to light)" },
+          { label: "Usable Aperture Range", value: "z = [0, 71mm] (95% of total light height)" },
+          { label: "File Exports", value: "DXF/SVG (flat sheets), STL (solid cylindrical mesh)" }
+        ]
+      },
+      {
+        type: "steps-list",
+        title: "Mathematical Processing Pipeline",
+        items: [
+          { label: "Phase 1: Image Binarization", value: "Loads the silhouette image, converts to grayscale, applies Otsu thresholding, and detects boundaries." },
+          { label: "Phase 2: Geometry Modeling", value: "Simulates the 2D cross-section paths of light rays from the point source through cylinder coordinates." },
+          { label: "Phase 3: Distortion Pre-Correction", value: "Pre-warps the image to cancel out non-linear height scaling. Top sections near the light are heavily compressed, while bottom sections are stretched." },
+          { label: "Phase 4: Ray-Trace Simulation", value: "Forward ray-traces the pre-distorted template coordinates to verify resulting shadow accuracy." },
+          { label: "Phase 5: Template Generation", value: "Unrolls the warped cylindrical coordinates onto a flat 2D template ready for laser cutter pathing." },
+          { label: "Phase 6: 3D STL Mesh Export", value: "Generates a complete 3D printable mesh with correct wall thicknesses and custom cylinder supports." }
+        ]
+      }
+    ]
   },
   {
     id: "qr2wallet",
@@ -213,6 +408,39 @@ export const PROJECTS: Project[] = [
       "Performs real-time barcode translation (PDF417, Aztec, QR, Code 128).",
       "Integrates fully with Apple's standard Add to Wallet prompt."
     ],
-    link: "https://github.com/Pasindu-Vihangana"
+    link: "https://github.com/Pasindu-Vihangana",
+    sections: [
+      {
+        type: "mermaid",
+        title: "Swift-to-C Bridging Architecture",
+        content: `graph TD
+  UI[SwiftUI Interface] --> Swift[PassSigner.swift Logic]
+  Swift --> Bridge[Objective-C++ Bridging Header]
+  Bridge --> C[C PassSigner Wrapper]
+  C --> OpenSSL[Embedded C-compiled OpenSSL Library]
+  OpenSSL --> PKCS7[Generate PKCS#7 Signature]
+  PKCS7 --> PKPASS[Compile Signed .pkpass Bundle]`
+      },
+      {
+        type: "highlights-grid",
+        title: "Cryptographic & Security Features",
+        items: [
+          { title: "Offline PKCS#7", text: "Signs manifest.json files directly on the iPhone, avoiding remote servers and protecting private user keys." },
+          { title: "Keychain Storage", text: "Stores developer certificates (.p12) and passwords within the hardware-backed iOS System Keychain." },
+          { title: "Level H Error Correction", text: "Generates high-contrast barcodes to ensure immediate read success under scanning hardware." },
+          { title: "Layout Configurations", text: "Supports Apple Pass layouts: Generic, Boarding Pass, Event Ticket, Coupon, and Store Card." }
+        ]
+      },
+      {
+        type: "steps-list",
+        title: "Apple Wallet Offline Sign Setup Guide",
+        items: [
+          { label: "Step 1: Register Pass Type ID", value: "Log in to the Apple Developer portal, create a new Pass Type ID identifier (e.g. pass.com.domain.app)." },
+          { label: "Step 2: Download Pass Certificate", value: "Create a Pass Type ID Certificate, generate a Certificate Signing Request (CSR) on your Mac, upload it, and download the resulting .cer file." },
+          { label: "Step 3: Export as .p12 File", value: "Import the certificate into Mac Keychain Access, right-click and select export as Personal Information Exchange (.p12) with a password." },
+          { label: "Step 4: Import into QR2Wallet", value: "Transfer the .p12 file to your iPhone, choose select certificate inside the settings tab, type the password, and verify the details." }
+        ]
+      }
+    ]
   }
 ];

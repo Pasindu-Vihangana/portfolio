@@ -2,13 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import { Icons } from "@/components/Icons";
-import { PROJECTS, Project } from "@/data/projects";
+import { PROJECTS } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
-import ProjectModal from "@/components/ProjectModal/ProjectModal";
 
 export default function ExperiencePage() {
   const [projectFilter, setProjectFilter] = useState<"all" | "hardware" | "ai" | "3d" | "mobile">("all");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filteredProjects = projectFilter === "all"
     ? PROJECTS
@@ -219,7 +217,6 @@ export default function ExperiencePage() {
               <ProjectCard
                 key={proj.id}
                 project={proj}
-                onClick={() => setSelectedProject(proj)}
                 exploreLabel="Explore Case Study"
               />
             ))}
@@ -227,11 +224,6 @@ export default function ExperiencePage() {
         </section>
       </div>
 
-      {/* Project Details Modal */}
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
     </div>
   );
 }
