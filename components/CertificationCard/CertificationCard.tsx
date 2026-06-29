@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Certification } from "@/data/certifications";
+import { Certification } from "@/context/certifications";
 import styles from "./CertificationCard.module.css";
 
 interface CertificationCardProps {

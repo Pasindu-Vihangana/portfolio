@@ -153,4 +153,26 @@ body {
   left: 120%;
 }
 
+/* Custom premium styling for KaTeX block equations */
+.katex-display {
+  display: block !important;
+  text-align: center !important;
+  padding: 1.25rem 1rem !important;
+  margin: 1.5rem auto !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: rgba(19, 19, 19, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  max-width: 100%;
+}
+
+/* Inline math adjustments */
+.katex {
+  display: inline !important;
+  white-space: nowrap;
+  font-size: 1.05em;
+  color: var(--color-primary); /* Style math variables with gold highlight */
+}
+
 

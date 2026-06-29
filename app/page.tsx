@@ -4,10 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "@/components/Icons";
-import { PROJECTS } from "@/data/projects";
+import { PROJECTS } from "@/context/projects";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 
-import { CERTIFICATIONS } from "@/data/certifications";
+import { CERTIFICATIONS } from "@/context/certifications";
 import CertificationCard from "@/components/CertificationCard/CertificationCard";
 import { ParallaxBackground } from "@/components/ParallaxBackground";
 

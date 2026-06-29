@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Project } from "@/data/projects";
+import { Project } from "@/context/projects";
 import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {

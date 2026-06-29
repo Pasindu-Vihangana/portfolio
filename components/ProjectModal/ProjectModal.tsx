@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { Project } from "@/data/projects";
+import { Project } from "@/context/projects";
 import styles from "./ProjectModal.module.css";
 
 interface ProjectModalProps {
@@ -131,9 +131,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   <button
                     key={iIdx}
                     onClick={() => setActiveImageIndex(iIdx)}
-                    className={`${styles.thumbnailButton} ${
-                      activeImageIndex === iIdx ? styles.thumbnailActive : ""
-                    }`}
+                    className={`${styles.thumbnailButton} ${activeImageIndex === iIdx ? styles.thumbnailActive : ""
+                      }`}
                   >
                     <Image
                       src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${img}`}
@@ -193,9 +192,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   {Object.entries(project.detailedSpecs).map(([key, val], sIdx) => (
                     <div
                       key={sIdx}
-                      className={`${styles.specsRow} ${
-                        sIdx % 2 === 0 ? styles.specsRowEven : styles.specsRowOdd
-                      } ${sIdx !== 0 ? styles.specsRowBorder : ""}`}
+                      className={`${styles.specsRow} ${sIdx % 2 === 0 ? styles.specsRowEven : styles.specsRowOdd
+                        } ${sIdx !== 0 ? styles.specsRowBorder : ""}`}
                     >
                       <span className={styles.specKey}>{key}</span>
                       <span className={styles.specVal}>{val}</span>

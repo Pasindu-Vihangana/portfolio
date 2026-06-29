@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Icons } from "@/components/Icons";
-import { PROJECTS } from "@/data/projects";
+import { PROJECTS } from "@/context/projects";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 
 export default function ExperiencePage() {
@@ -15,7 +15,7 @@ export default function ExperiencePage() {
   return (
     <div className="flex-1 bg-background text-foreground py-16 sm:py-24 font-sans relative">
       <div className="container mx-auto px-6 max-w-7xl animate-fade-in-up">
-        
+
         {/* Page Header */}
         <div className="max-w-2xl mb-16">
           <div className="flex items-center gap-2 text-primary mb-4">
@@ -35,7 +35,7 @@ export default function ExperiencePage() {
         {/* Timeline Container */}
         <div className="max-w-5xl mx-auto mb-28">
           <div className="relative py-8 sm:py-16">
-            
+
             {/* Centered Timeline Line */}
             <div className="absolute left-[7px] sm:left-1/2 sm:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-primary/20">
               <div className="absolute inset-0 bg-primary/40 animate-pulse rounded-full" />
@@ -44,10 +44,10 @@ export default function ExperiencePage() {
             </div>
 
             <div className="space-y-16 sm:space-y-24">
-              
+
               {/* SRQ Robotics - Left Side (Active) */}
               <div className="relative pl-8 sm:pl-0 sm:w-1/2 sm:pr-12 sm:text-right">
-                
+
                 {/* Active Glowing Dot centered on timeline */}
                 <div className="absolute top-1.5 w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 border-primary bg-background ring-4 ring-primary/20 left-0 sm:left-auto sm:-right-2.5 z-10">
                   <span className="absolute inset-0 rounded-full bg-primary animate-ping opacity-45" />
@@ -93,17 +93,17 @@ export default function ExperiencePage() {
                   <div className="flex items-center gap-1.5 text-muted-foreground mt-1 sm:justify-end">
                     <span className="font-semibold text-sm">SRQ Robotics LLC</span>
                     <span>·</span>
-                    <a 
-                      href="https://srqrobotics.com" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      href="https://srqrobotics.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-xs hover:text-primary hover-underline flex items-center gap-0.5"
                     >
                       srqrobotics.com
                       <Icons.ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
-                  
+
                   <p className="text-sm text-muted-foreground mt-4 leading-relaxed max-w-lg sm:ml-auto">
                     Full-cycle design and firmware deployment for production hardware. Engineered micro-telemetry wearables, BLE athletic trackers, rehabilitation sensors, and cascaded flight stabilization controls for international drone platforms.
                   </p>
@@ -120,7 +120,7 @@ export default function ExperiencePage() {
 
               {/* MAS Intimates - Right Side (Past) */}
               <div className="relative pl-8 sm:pl-0 sm:w-1/2 sm:pl-12 sm:ml-auto">
-                
+
                 {/* Past Dot centered on timeline */}
                 <div className="absolute top-1.5 w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 border-primary bg-background left-0 sm:-left-2.5 z-10">
                   <span className="absolute inset-1 sm:inset-1.5 rounded-full bg-primary/60" />
@@ -153,7 +153,7 @@ export default function ExperiencePage() {
                   <p className="text-sm font-semibold text-muted-foreground mt-1">
                     MAS Intimates
                   </p>
-                  
+
                   <p className="text-sm text-muted-foreground mt-4 leading-relaxed max-w-lg">
                     Developed computer vision and ML pipeline models for automated fabric piece counting. Modeled closed-loop roller alignment feeds using digital sensors and custom embedded actuation routines.
                   </p>
@@ -199,11 +199,10 @@ export default function ExperiencePage() {
                 <button
                   key={item.filter}
                   onClick={() => setProjectFilter(item.filter as any)}
-                  className={`px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    projectFilter === item.filter
-                      ? "bg-primary text-primary-foreground font-bold"
-                      : "hover:text-foreground"
-                  }`}
+                  className={`px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer ${projectFilter === item.filter
+                    ? "bg-primary text-primary-foreground font-bold"
+                    : "hover:text-foreground"
+                    }`}
                 >
                   {item.label}
                 </button>

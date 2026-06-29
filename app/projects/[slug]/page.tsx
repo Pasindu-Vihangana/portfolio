@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { PROJECTS } from "@/data/projects";
+import fs from "fs";
+import path from "path";
+import { PROJECTS } from "@/context/projects";
 import ProjectDetailPage from "@/components/ProjectDetailPage/ProjectDetailPage";
 
 interface PageProps {
@@ -40,5 +42,15 @@ export default async function ProjectPage({ params }: PageProps) {
     notFound();
   }
 
-  return <ProjectDetailPage project={project} />;
+  let readmeContent = "";
+  try {
+    const filePath = path.join(process.cwd(), "context", "projects", `${slug}.md`);
+    if (fs.existsSync(filePath)) {
+      readmeContent = fs.readFileSync(filePath, "utf-8");
+    }
+  } catch (error) {
+    console.error(`Failed to read README for slug ${slug}:`, error);
+  }
+
+  return <ProjectDetailPage project={project} readmeContent={readmeContent} />;
 }

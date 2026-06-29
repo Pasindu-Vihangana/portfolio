@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { CERTIFICATIONS } from "@/data/certifications";
+import { CERTIFICATIONS } from "@/context/certifications";
 import CertificationCard from "@/components/CertificationCard/CertificationCard";
 import styles from "./CertificationsShowcase.module.css";
 
