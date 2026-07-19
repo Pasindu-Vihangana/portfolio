@@ -30,9 +30,9 @@ export default function Header() {
         {/* Logo */}
         <Link
           href="/"
-          className="text-xl font-serif text-foreground hover:text-primary transition-colors lg:w-[200px]"
+          className="text-xl font-serif text-foreground hover:text-primary transition-colors lg:w-[400px]"
         >
-          <span className="font-bold tracking-tight">PASINDU</span>
+          <span className="font-bold tracking-tight">PASINDU VIHANGANA</span>
         </Link>
 
         {/* Desktop Links */}
