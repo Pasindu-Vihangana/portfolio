@@ -143,66 +143,41 @@ const SERVICES = [
   }
 ];
 
-const SKILLS_CATEGORIES = [
-  {
-    title: "Control & State Estimation",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-primary">
-        <path d="M3 12h18M3 6h18M3 18h18" />
-        <circle cx="12" cy="12" r="3" fill="currentColor" className="text-primary/20" />
-      </svg>
-    ),
-    skills: [
-      { name: "Cascaded PID", rate: "95%", color: "#e9c349" },
-      { name: "EKF / Kalman", rate: "90%", color: "#e9c349" },
-      { name: "Orientation", rate: "95%", color: "#e9c349" },
-      { name: "MATLAB Models", rate: "85%", color: "#e9c349" }
-    ]
-  },
-  {
-    title: "Firmware & RTOS",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-primary">
-        <rect width="20" height="16" x="2" y="4" rx="2" />
-        <path d="m6 10 2 2-2 2M11 14h5" />
-      </svg>
-    ),
-    skills: [
-      { name: "C/C++ Development", rate: "95%", color: "#e9c349" },
-      { name: "RTOS Task Scheduling", rate: "90%", color: "#e9c349" },
-      { name: "BLE Bluetooth", rate: "90%", color: "#e9c349" },
-      { name: "Drivers (SPI / I2C)", rate: "90%", color: "#e9c349" }
-    ]
-  },
-  {
-    title: "Hardware & PCB Design",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-primary">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
-    ),
-    skills: [
-      { name: "Multilayer PCB Design", rate: "90%", color: "#e9c349" },
-      { name: "High-density Routing", rate: "85%", color: "#e9c349" },
-      { name: "Signal Integrity", rate: "85%", color: "#e9c349" },
-      { name: "Altium / KiCad", rate: "90%", color: "#e9c349" }
-    ]
-  },
-  {
-    title: "AI & Computer Vision",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-primary">
-        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
-        <circle cx="12" cy="12" r="4" />
-      </svg>
-    ),
-    skills: [
-      { name: "Pose Estimation Models", rate: "85%", color: "#e9c349" },
-      { name: "Deep Learning Architectures", rate: "80%", color: "#e9c349" },
-      { name: "OpenCV Processing", rate: "90%", color: "#e9c349" },
-      { name: "NumPy / Pandas DSP", rate: "85%", color: "#e9c349" }
-    ]
-  }
+// REMOVED SKILLS (Need to find logos/icons for these to add them back later):
+// - Cascaded PID
+// - EKF / Kalman
+// - Orientation
+// - C/C++ Development
+// - RTOS Task Scheduling
+// - Drivers (SPI / I2C)
+// - Multilayer PCB Design
+// - High-density Routing
+// - Signal Integrity
+// - Altium / KiCad
+// - Pose Estimation Models
+// - Deep Learning Architectures
+// - OpenCV Processing
+// - NumPy / Pandas DSP
+
+const TECH_LOGOS_TRACK1 = [
+  { name: "Python", filename: "python-logo.webp" },
+  { name: "STM32", filename: "stm32-logo.webp" },
+  { name: "Arduino", filename: "arduino-logo.webp" },
+  { name: "ESP32", filename: "esp-logo.webp" },
+  { name: "Nordic Semi", filename: "nordic-semiconductor-logo.webp" },
+  { name: "Raspberry Pi", filename: "raspberrypi-logo.webp" },
+  { name: "PlatformIO", filename: "platformio-logo.webp" },
+  { name: "MATLAB", filename: "matlab-logo.webp" }
+];
+
+const TECH_LOGOS_TRACK2 = [
+  { name: "Android Studio", filename: "android-studio-logo.webp" },
+  { name: "Bluetooth / BLE", filename: "bluetooth-logo.webp" },
+  { name: "Wi-Fi", filename: "wifi-logo.webp" },
+  { name: "GPS", filename: "gps-logo.webp" },
+  { name: "Microchip", filename: "microchip-logo.webp" },
+  { name: "MQTT", filename: "mqtt-logo.webp" },
+  { name: "NFC", filename: "nfc-logo.webp" }
 ];
 
 
@@ -475,34 +450,89 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
-            {SKILLS_CATEGORIES.map((category, idx) => (
-              <div key={idx} className="p-6 rounded-xl bg-[#131313]/45 backdrop-blur-sm border border-border space-y-6">
-                <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground border-b border-border/40 pb-3">
-                  {category.icon}
-                  {category.title}
-                </h3>
+          {/* Logo Marquee */}
+          <div className="relative flex flex-col gap-8 overflow-hidden py-10 w-full select-none [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">
+            {/* Ambient glows behind the marquee */}
+            <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-72 h-32 bg-primary/5 blur-[80px] rounded-full pointer-events-none"></div>
+            <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-72 h-32 bg-primary/5 blur-[80px] rounded-full pointer-events-none"></div>
 
-                <div className="grid grid-cols-4 gap-6">
-                  {category.skills.map((skill, sIdx) => (
-                    <div key={sIdx} className="flex flex-col items-center gap-2 group hover:translate-y-[-2px] transition-transform duration-300">
-                      <div className="w-10 h-10 rounded-lg bg-muted/40 border border-border flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/30 transition-colors text-xs font-bold font-mono">
-                        {skill.name.substring(0, 2).toUpperCase()}
-                      </div>
-                      <span className="text-[9px] text-muted-foreground group-hover:text-foreground text-center uppercase tracking-wider font-semibold line-clamp-2 h-7 flex items-center justify-center px-0.5">
-                        {skill.name}
-                      </span>
-                      <div className="w-full h-[1.5px] bg-border/50 rounded-full overflow-hidden">
-                        <div
-                          className="h-full rounded-full bg-primary"
-                          style={{ width: skill.rate }}
-                        />
-                      </div>
+            {/* Track 1 (Scrolling Left) */}
+            <div className="relative w-full overflow-hidden flex flex-col gap-2">
+              <div className="flex gap-8 w-max animate-marquee hover:[animation-play-state:paused] py-2">
+                {TECH_LOGOS_TRACK1.map((logo, idx) => (
+                  <div key={idx} className="flex flex-col items-center gap-3 px-6 py-2 transition-all duration-300 group cursor-pointer">
+                    <div className="relative w-14 h-14 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/tech/${logo.filename}`}
+                        alt={`${logo.name} logo`}
+                        width={56}
+                        height={56}
+                        className="object-contain"
+                      />
                     </div>
-                  ))}
-                </div>
+                    <span className="text-[10px] sm:text-xs font-semibold font-mono tracking-wider text-muted-foreground group-hover:text-primary transition-colors uppercase">
+                      {logo.name}
+                    </span>
+                  </div>
+                ))}
+                {/* Duplicated for seamless looping */}
+                {TECH_LOGOS_TRACK1.map((logo, idx) => (
+                  <div key={`dup-${idx}`} className="flex flex-col items-center gap-3 px-6 py-2 transition-all duration-300 group cursor-pointer">
+                    <div className="relative w-14 h-14 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/tech/${logo.filename}`}
+                        alt={`${logo.name} logo`}
+                        width={56}
+                        height={56}
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="text-[10px] sm:text-xs font-semibold font-mono tracking-wider text-muted-foreground group-hover:text-primary transition-colors uppercase">
+                      {logo.name}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Track 2 (Scrolling Right) */}
+            <div className="relative w-full overflow-hidden flex flex-col gap-2">
+              <div className="flex gap-8 w-max animate-marquee-reverse hover:[animation-play-state:paused] py-2">
+                {TECH_LOGOS_TRACK2.map((logo, idx) => (
+                  <div key={idx} className="flex flex-col items-center gap-3 px-6 py-2 transition-all duration-300 group cursor-pointer">
+                    <div className="relative w-14 h-14 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/tech/${logo.filename}`}
+                        alt={`${logo.name} logo`}
+                        width={56}
+                        height={56}
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="text-[10px] sm:text-xs font-semibold font-mono tracking-wider text-muted-foreground group-hover:text-primary transition-colors uppercase">
+                      {logo.name}
+                    </span>
+                  </div>
+                ))}
+                {/* Duplicated for seamless looping */}
+                {TECH_LOGOS_TRACK2.map((logo, idx) => (
+                  <div key={`dup-${idx}`} className="flex flex-col items-center gap-3 px-6 py-2 transition-all duration-300 group cursor-pointer">
+                    <div className="relative w-14 h-14 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/tech/${logo.filename}`}
+                        alt={`${logo.name} logo`}
+                        width={56}
+                        height={56}
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="text-[10px] sm:text-xs font-semibold font-mono tracking-wider text-muted-foreground group-hover:text-primary transition-colors uppercase">
+                      {logo.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Featured Certifications */}
