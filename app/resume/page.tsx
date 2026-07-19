@@ -158,9 +158,9 @@ export default function ResumePage() {
                   {
                     title: "Falcon Tracker: Long-Range Transmitter",
                     role: "RF & Embedded Hardware Lead",
-                    tags: ["Semtech SX1268", "LoRa RF", "RTOS", "SolidWorks"],
+                    tags: ["Proprietary RF Technology", "RTOS", "SolidWorks"],
                     bullets: [
-                      "Designed a custom power-amplified sub-15g LoRa tracking transmitter achieving verified 250 km+ air-to-ground telemetry transmission.",
+                      "Designed a custom power-amplified sub-15g Proprietary RF transmitter achieving verified 250 km+ air-to-ground telemetry transmission.",
                       "Engineered a waterproof compact enclosure body with integrated 0.5 mm thread pitch ISO Metric battery cap interfaces in SolidWorks.",
                       "Wrote power-optimized Nordic nRF52 RTOS task schedulers for extended battery lifecycles in critical search environments."
                     ]

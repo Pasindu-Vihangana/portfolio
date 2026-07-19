@@ -26,9 +26,9 @@ export const PROJECTS: Project[] = [
     title: "Falcon Tracker",
     category: "hardware",
     categoryLabel: "Hardware & IoT",
-    specs: "Semtech SX1268 LoRa | 27 dBm Tx Power | >250 km Air Range",
-    description: "An autonomous falconry tracking transmitter utilizing the Semtech SX1268 LoRa transceiver. Designed for range-critical applications, it integrates a power-amplified transmitter, low-noise receiver, custom 3D-printed enclosure, and precision-engineered mechanical components.",
-    tags: ["Semtech SX1268", "LoRa RF", "RTOS", "3D CAD (SolidWorks)", "PCB Design"],
+    specs: "Proprietary RF Technology | 27 dBm Tx Power | >250 km Air Range",
+    description: "An autonomous falconry tracking transmitter utilizing a Proprietary RF transceiver. Designed for range-critical applications, it integrates a power-amplified transmitter, low-noise receiver, custom 3D-printed enclosure, and precision-engineered mechanical components.",
+    tags: ["Proprietary RF Technology", "RTOS", "3D CAD (SolidWorks)", "PCB Design"],
     images: [
       "/projects/Falcon Tracker/hero.jpeg",
       "/projects/Falcon Tracker/Transmitter-Assembly.png",
@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
       "/projects/Falcon Tracker/Charger PCB.png"
     ],
     detailedSpecs: {
-      "RF Transceiver": "Semtech SX1268 (sub-GHz LoRa)",
+      "RF Transceiver": "Proprietary RF Technology",
       "Transmit Power": "27 dBm (via integrated Power Amplifier)",
       "Receiver Gain": "20 dBm (via Low Noise Amplifier)",
       "Air-to-Ground Range": "> 250 km (field tested)",
@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
         type: "specs-table",
         title: "RF Configuration & Performance Parameters",
         items: [
-          { label: "RF Transceiver", value: "Semtech SX1268 (High-efficiency sub-GHz)" },
+          { label: "RF Transceiver", value: "Proprietary RF Technology (High-efficiency sub-GHz)" },
           { label: "Tx Output Power", value: "27 dBm (enhanced via integrated Power Amplifier)" },
           { label: "Rx Front-End Gain", value: "20 dBm (boosted via Low Noise Amplifier)" },
           { label: "Bandwidth (BW)", value: "500 kHz (optimized for sensitivity vs rate)" },

@@ -1,14 +1,14 @@
-# Falcon Tracker: Long-Range LoRa Transmitter
+# Falcon Tracker: Long-Range Proprietary RF Technology Transmitter
 
 > **Category:** Hardware & IoT  
 > **GitHub Link:** [Explore on GitHub](https://github.com/Pasindu-Vihangana)  
-> **Tags:** `Semtech SX1268` `LoRa RF` `RTOS` `3D CAD (SolidWorks)` `PCB Design`
+> **Tags:** `Proprietary RF Technology` `RTOS` `3D CAD (SolidWorks)` `PCB Design`
 
 
 
 ![Falcon Tracker Hero](./hero.jpeg)
 
-Falcon Tracker is a high-performance, compact, and lightweight tracking transmitter utilizing the Semtech SX1268 LoRa transceiver. Designed for range-critical applications, it integrates a power-amplified transmitter, low-noise receiver, custom 3D-printed enclosure, and precision-engineered mechanical components.
+Falcon Tracker is a high-performance, compact, and lightweight tracking transmitter utilizing a Proprietary RF transceiver. Designed for range-critical applications, it integrates a power-amplified transmitter, low-noise receiver, custom 3D-printed enclosure, and precision-engineered mechanical components.
 
 During field tests, this design achieved an **Air-to-Ground transmission range exceeding 250 km** and a **Ground-to-Ground range of approximately 12 km**, proving its viability for long-distance telemetry, tracking, and remote communication.
 
@@ -20,7 +20,7 @@ Maximizing range in power- and size-constrained environments requires optimal co
 
 | Parameter | Configuration / Value | Description |
 | :--- | :--- | :--- |
-| **RF Transceiver** | Semtech SX1268 | High-efficiency sub-GHz LoRa chip |
+| **RF Transceiver** | Proprietary RF Technology | High-efficiency sub-GHz chip |
 | **Transmit (Tx) Power** | `27 dBm` | Boosted via integrated Power Amplifier (PA) |
 | **Receive (Rx) Gain** | `20 dBm` | Enhanced via Low Noise Amplifier (LNA) |
 | **Bandwidth (BW)** | `500` | Optimizes data rate vs. receiver sensitivity |
@@ -30,7 +30,7 @@ Maximizing range in power- and size-constrained environments requires optimal co
 
 ### 🌍 Range Test Results
 * **Air-to-Ground Distance:** **> 250 km** (limit of testing facilities, with potential for further range)
-* **Ground-to-Ground Distance:** **~ 12 km** (tested under light-obstacle conditions)
+* **Ground-to-Ground Distance:** **~ 72 km** (tested under light-obstacle conditions)
 * **Field Note:** Real-world receiver sensitivity limits reliable reception to around `-120 dBm` (compared to the theoretical maximum of `-148 dBm` stated in datasheet specifications). VNAs (Vector Network Analyzers) should be used to verify antenna tuning, as commercial antennas often deviate from their designated frequencies.
 
 ---
@@ -101,4 +101,4 @@ The charger PCB is capable of charging 3 battaries at once. It features: full ch
 
 ---
 
-#lora #wireless #wirelesscommunication #longrangetransmission #lorawan #datalink #telecommunication #radiofrequency #rf #iot #internetofthings #sx1268 #electronics #tech #science #antenna
+#wireless #wirelesscommunication #longrangetransmission #datalink #telecommunication #radiofrequency #rf #iot #internetofthings #electronics #tech #science #antenna

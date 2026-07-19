@@ -22,7 +22,7 @@ Mechatronics Engineer with 3+ years of experience building real-world robotic an
 | Category | Tech Stack & Skills |
 | :--- | :--- |
 | **Languages** | C, C++, Python, Swift, TypeScript, MATLAB, HTML/CSS, Assembly |
-| **Hardware & IoT** | PCB Design (Up to 4-layer High-Density, Impedance Matched), Nordic nRF52, ESP32, STM32, Semtech SX1268 LoRa RF, Bluetooth Low Energy (BLE), RTOS Schedulers, Sensor Fusion (6-DoF IMUs, Kalman Filtering), DSP noise filtering |
+| **Hardware & IoT** | PCB Design (Up to 4-layer High-Density, Impedance Matched), Nordic nRF52, ESP32, STM32, Proprietary RF Technology, Bluetooth Low Energy (BLE), RTOS Schedulers, Sensor Fusion (6-DoF IMUs, Kalman Filtering), DSP noise filtering |
 | **AI & Computer Vision** | YOLO Object Detection, MediaPipe Pose (33-landmark estimation), PyTorch, OpenCV, CNN Classifiers |
 | **3D & Graphics** | Three.js (WebGL), 3D Character Rigging & Animation (GLTF/GLB), 3D CAD modeling (SolidWorks), 3D Geometry & STL mesh generation |
 | **Mobile & Crypto** | iOS SDK, Apple Wallet Passes (.pkpass), On-device PKCS#7 cryptographic signing, C-layer OpenSSL integration |
@@ -47,9 +47,9 @@ Mechatronics Engineer with 3+ years of experience building real-world robotic an
 ## 📂 Key Engineering Projects
 
 ### 📡 [Falcon Tracker](https://github.com/Pasindu-Vihangana) — Long-Range Telemetry Transmitter
-- **Specs:** Semtech SX1268 LoRa | 27 dBm Tx Power | >250 km Air Range
+- **Specs:** Proprietary RF Technology | 27 dBm Tx Power | >250 km Air Range
 - **Features:**
-  - Designed an autonomous falconry tracking transmitter utilizing sub-GHz LoRa RF.
+  - Designed an autonomous falconry tracking transmitter utilizing sub-GHz Proprietary RF Technology.
   - Achieved a verified **250 km+ air-to-ground telemetry range** (field tested).
   - Wrote power-optimized Nordic nRF52 RTOS task schedulers for extended battery cycles.
   - Designed a waterproof, ultra-lightweight (<15g) enclosure with integrated metric ISO thread cap in SolidWorks.
