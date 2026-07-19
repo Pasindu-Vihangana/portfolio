@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "@/components/useReducedMotion";
 
 const TOTAL_FRAMES = 144;
-const FRAME_PATH = "/images/frames/frame_";
-const FALLBACK_IMAGE = "/images/frames/frame_0001.jpg";
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const FRAME_PATH = `${BASE_PATH}/images/frames/frame_`;
+const FALLBACK_IMAGE = `${BASE_PATH}/images/frames/frame_0001.jpg`;
 
 export function ParallaxBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
